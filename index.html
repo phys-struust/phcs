@@ -226,9 +226,25 @@
         /* Адаптивность для телефонов */
         @media (max-width: 768px) {
             header h1 { font-size: 1.6rem; }
-            nav { padding: 10px; }
-            nav a { display: block; margin: 8px 0; border-bottom: 1px solid #f0f0f0; }
-            nav a:last-child { border-bottom: none; }
+            nav {
+                padding: 10px 12px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* скрываем полосу прокрутки в Firefox */
+            }
+            nav::-webkit-scrollbar {
+                display: none; /* скрываем полосу прокрутки в Chrome/Safari */
+            }
+            nav a {
+                display: inline-block;
+                margin: 0 4px;
+                padding: 6px 14px;
+                background-color: #f1f5f9;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                border-bottom: none;
+            }
             .btn { display: block; margin: 10px auto; width: 100%; max-width: 300px; }
         }
     </style>
@@ -276,12 +292,12 @@
         <h2>Ключевые даты</h2>
         <div class="grid">
             <div class="card">
-                <span class="date-badge">до 14 сентября 2026 г.</span>
+                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
                 <h3>Приём заявок</h3>
                 <p>Окончание приёма регистрационных форм участников конференции.</p>
             </div>
             <div class="card">
-                <span class="date-badge">до 14 сентября 2026 г.</span>
+                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
                 <h3>Приём тезисов</h3>
                 <p>Приём текстов докладов и статей в формате docx для публикации в сборнике.</p>
             </div>
@@ -403,8 +419,9 @@
         <div class="card">
             <p><strong>Адрес:</strong> <a href="https://yandex.ru/maps/?text=Стерлитамак+проспект+Ленина+37" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37, СФ УУНиТ</a></p>
             <p><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
-            <p><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none;">phcs-struust@mail.ru</a></p>
-            <p><strong>Телефон:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
+            <p><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru">phcs-struust@mail.ru</a></p>
+            <p><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
+            <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
         </div>
     </section>
 </div>
