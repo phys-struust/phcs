@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФКС-2026: Физика конденсированного состояния (ТЕСТ)</title>
+    <!-- Превью для мессенджеров и соцсетей -->
+    <meta property="og:title" content="Конференция «ФКС-2026» | СФ УУНиТ">
+    <meta property="og:description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения». 24–26 сентября 2026 г., Стерлитамак. Приём материалов до 14 сентября.">
+    <meta property="og:url" content="https://phys-struust.github.io/phcs/">
+    <meta property="og:type" content="website">
+    <style>
+        :root {
+            --primary: #004488;      /* Основной синий цвет */
+            --primary-hover: #003366;
+            --accent: #d9534f;       /* Цвет акцентных кнопок */
+            --bg: #f4f7f6;           /* Фон страницы */
+            --text: #333333;
+            --text-muted: #6c757d;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 70px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Шапка сайта */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0066cc 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin: 20px 0;
+            line-height: 1.3;
+        }
+
+        .hero-meta {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Навигация (меню) */
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Основной контейнер */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        /* Сетка для карточек */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Карточки (секции, даты) */
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            border: 2px solid var(--accent);
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #c9302c;
+            border-color: #c9302c;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+            border-color: white;
+        }
+
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+            border: 2px solid #28a745;
+        }
+
+        .btn-green:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* Значки дат */
+        .date-badge {
+            background-color: #e9ecef;
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Списки */
+        .styled-list {
+            list-style-type: none;
+        }
+
+        .styled-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .styled-list li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            line-height: 1rem;
+            top: 4px;
+        }
+
+        .committee-list p {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .committee-list p:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Подвал */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 40px;
+        }
+
+        /* Адаптивность для телефонов */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6rem; }
+            nav {
+                padding: 10px 12px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            nav::-webkit-scrollbar {
+                display: none;
+            }
+            nav a {
+                display: inline-block;
+                margin: 0 4px;
+                padding: 6px 14px;
+                background-color: #f1f5f9;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                border-bottom: none;
+            }
+            .btn { display: block; margin: 10px auto; width: 100%; max-width: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container" style="padding: 0;">
+        <p style="text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; margin-bottom: 10px; opacity: 0.8;">
+            Стерлитамакский филиал УУНиТ &bull; Естественнонаучный факультет
+        </p>
+        <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
+        <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37</p>
+        <div>
+            <a class="btn" href="#registration">Подать заявку</a> 
+            <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener">Первое информационное письмо</a>
+            <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener">Второе информационное письмо</a>
+            <a class="btn btn-secondary" href="#" onclick="return false;" style="cursor: default;" title="Ссылка на подключение будет опубликована ближе к началу конференции">Яндекс Телемост (появится позднее)</a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <a href="#about">О конференции</a> 
+    <a href="#dates">Ключевые даты</a> 
+    <a href="#sections">Секции</a> 
+    <a href="#publication">Условия и взносы</a> 
+    <a href="#rules">Оформление тезисов</a> 
+    <a href="#committee">Комитеты</a> 
+    <a href="#registration">Регистрация</a> 
+    <a href="#contacts">Контакты</a>
+</nav>
+
+<div class="container">
+    <section id="about" style="margin-bottom: 50px;">
+        <h2>О конференции</h2>
+        <div class="card">
+            <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
+            <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
+            <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
+        </div>
+    </section>
+
+    <section id="dates" style="margin-bottom: 50px;">
+        <h2>Ключевые даты</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
+                <h3>Приём заявок</h3>
+                <p>Окончание приёма регистрационных форм участников конференции.</p>
+            </div>
+            <div class="card">
+                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
+                <h3>Приём тезисов</h3>
+                <p>Приём текстов докладов и статей в формате docx для публикации в сборнике.</p>
+            </div>
+            <div class="card">
+                <span class="date-badge">24&ndash;26 сентября 2026 г.</span>
+                <h3>Дни конференции</h3>
+                <p>Пленарные заседания, секционные доклады, дискуссии и подведение итогов.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sections" style="margin-bottom: 50px;">
+        <h2>Научные направления и секции</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>1. Механика сплошных сред</h3>
+                <p>Гидродинамика, механика деформируемого твердого тела, фильтрация и теплофизика пористых сред.</p>
+            </div>
+            <div class="card">
+                <h3>2. Структура и свойства конденсированного состояния</h3>
+                <p>Кристаллическая структура, фазовые переходы и кинетика процессов в твердых телах.</p>
+            </div>
+            <div class="card">
+                <h3>3. Физика суперионных проводников и полупроводников</h3>
+                <p>Ионный перенос, халькогениды, полупроводниковые структуры и функциональные материалы.</p>
+            </div>
+            <div class="card">
+                <h3>4. Физика магнитных явлений. Магнетизм и спинтроника</h3>
+                <p>Мультиферроики, спинтроника, магнитные свойства и спектроскопия.</p>
+            </div>
+            <div class="card">
+                <h3>5. Неравновесная термодинамика. Фазовые переходы и критические явления</h3>
+                <p>Теория неравновесных процессов, термодинамика фазовых превращений и критические явления.</p>
+            </div>
+            <div class="card">
+                <h3>6. Математическая физика и искусственный интеллект</h3>
+                <p>Математическое моделирование физических процессов, машинное обучение и численные методы.</p>
+            </div>
+            <div class="card">
+                <h3>7. Материаловедение, наноматериалы, нанокомпозиты</h3>
+                <p>Нанотехнологии, функциональные наноматериалы, нанокомпозиты и полимерные структуры.</p>
+            </div>
+            <div class="card">
+                <h3>8. Экология, биология и медицинская физика</h3>
+                <p>Биофизика, экологический мониторинг, спектральный анализ биомолекул и медицинская физика.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="publication" style="margin-bottom: 50px;">
+        <h2>Условия участия и оргвзнос</h2>
+        <div class="card">
+            <ul class="styled-list">
+                <li><strong>Очное участие:</strong> 1 600 рублей (включает комплект участника и публикацию).</li>
+                <li><strong>Заочное / онлайн участие:</strong> 800 рублей.</li>
+            </ul>
+            <p style="margin-top: 15px; color: var(--text-muted);">Реквизиты и порядок оплаты организационного взноса направляются авторам после подтверждения принятия материалов.</p>
+            
+            <!-- Акцентный блок с памяткой перед оплатой -->
+            <div style="background-color: #fff8e1; border-left: 4px solid #ffb300; padding: 15px 20px; border-radius: 6px; margin: 20px 0 15px 0;">
+                <p style="margin: 0 0 10px 0; font-weight: bold; color: #b78103;">
+                    ⚠️ Важно: перед совершением оплаты обязательно ознакомьтесь с инструкцией!
+                </p>
+                <a class="btn" style="background-color: #ff9800; border-color: #ff9800; color: white; margin: 0;" href="Памятка.pdf" target="_blank" rel="noopener">Памятка по оплате (PDF)</a>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener">Договор публичной оферты (PDF)</a>
+                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener">Квитанция на оплату оргвзноса (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="rules" style="margin-bottom: 50px;">
+        <h2>Требования к оформлению тезисов</h2>
+        <div class="card">
+            <ul class="styled-list">
+                <li>Для публикации принимаются статьи объемом <strong>до 5 страниц</strong>, оформленные в программе <strong>MS Word</strong>.</li>
+                <li><strong>Параметры страницы:</strong> ориентация альбомная, 2 страницы на листе. Поля: верхнее/нижнее &mdash; 2,5 см, снаружи/внутри &mdash; 2,1 см.</li>
+                <li><strong>Шрифт:</strong> 10 пунктов Times New Roman, для сносок &mdash; 9.</li>
+                <li><strong>Абзац:</strong> междустрочный интервал одинарный, отступ первой строки 0,75 см; рисунки и таблицы вставлены в текст; перенос слов автоматический; страницы не нумеровать.</li>
+                <li><strong>Формулы:</strong> набираются в редакторе MS Equation или MathType.</li>
+                <li><strong>Структура заголовка:</strong> первая строка слева &mdash; УДК; вторая строка &mdash; Фамилии авторов полужирным шрифтом по центру; третья строка &mdash; название статьи по центру полужирным шрифтом прописными буквами. Далее курсивом &mdash; аннотация к статье (не более 5 строк) и ключевые слова (недопустимы формулы и спецсимволы). Фамилии авторов, название, аннотацию и ключевые слова продублировать на английском языке.</li>
+                <li><strong>Библиографический список:</strong> оформляется в соответствии с образцом в алфавитном порядке. Оформлять ссылки на соответствующий источник списка литературы следует в тексте в квадратных скобках. Не допускается использование автоматических постраничных ссылок.</li>
+                <li><strong>Именование файлов:</strong> <code>ФамилияИО_№секции.docx</code> и <code>заявка_ФамилияИО_№секции.docx</code>.</li>
+            </ul>
+            <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
+                Статья должна быть тщательно отредактирована. Все материалы печатаются в авторской редакции. Авторы несут ответственность за достоверность материала, изложенного в своих статьях. Статьи, оформленные с нарушениями указанных требований, могут быть отклонены.
+            </p>
+            <div style="margin-top: 20px;">
+                <a class="btn" style="margin-top: 0;" href="template_2026.docx" download>Скачать шаблон тезисов (.docx)</a>
+                <a class="btn" style="margin-top: 0;" href="template_application_2026.docx" download>Скачать шаблон заявки (.docx)</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="committee" style="margin-bottom: 50px;">
+        <h2>Организационный и программный комитеты</h2>
+        <div class="card">
+            <div class="committee-list">
+                <p><strong>Председатель оргкомитета:</strong> проф., д.ф.н. Сыров И. А. (СФ УУНиТ, Стерлитамак)</p>
+                <p><strong>Председатель программного комитета:</strong> д.т.н., проф. Самхарадзе Т. Г. (&laquo;Научтехлитиздат&raquo;, Москва)</p>
+                <p><strong>Сопредседатель программного комитета:</strong> проф., д.ф.-м.н. Биккулова Н. Н. (СФ УУНиТ, Стерлитамак)</p>
+                <p><strong>Ответственный секретарь:</strong> доц., к.ф.-м.н. Зеленова М. А. (СФ УУНиТ, Стерлитамак)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="registration" style="margin-bottom: 50px;">
+        <h2>Регистрация и подача материалов</h2>
+        <div class="card" style="text-align: center; padding: 35px 20px;">
+            <p style="margin-top: 5px; font-size: 1.1rem;">Отправьте заявку и материалы напрямую на электронную почту оргкомитета:</p>
+            <p style="margin-top: 15px; margin-bottom: 10px;">
+                <a style="color: var(--accent); font-weight: bold; font-size: 1.3rem; text-decoration: none;" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a>
+            </p>
+            <div>
+                <button type="button" onclick="navigator.clipboard.writeText('phcs-struust@mail.ru'); this.innerText='✓ Адрес скопирован!'; setTimeout(()=>this.innerText='Скопировать email', 2000);" 
+                        style="background: #f1f5f9; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; color: var(--primary); font-family: inherit;">
+                    Скопировать email
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <div class="card">
+            <p><strong>Адрес:</strong> <a href="https://yandex.ru/maps/?text=Стерлитамак+проспект+Ленина+37" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37, СФ УУНиТ</a></p>
+            <p><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
+            <p><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru">phcs-struust@mail.ru</a></p>
+            <p><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
+            <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p><a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.95rem;">↑ Наверх к началу страницы</a></p>
+    <p style="margin-top: 10px;">&copy; 2026 Кафедра общей и теоретической физики СФ УУНиТ. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
