@@ -108,6 +108,14 @@
             gap: 25px;
         }
 
+        /* Сетка для контактов и карты */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
         /* Карточки (секции, даты) */
         .card {
             background: var(--card-bg);
@@ -140,6 +148,9 @@
             transition: background 0.3s, transform 0.2s;
             border: 2px solid var(--accent);
             margin: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -171,6 +182,87 @@
             border-color: #1e7e34;
             color: white;
             transform: scale(1.02);
+        }
+
+        /* Центрированный блок почты с компактными кнопками-значками */
+        .email-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .email-link {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .email-link:hover {
+            opacity: 0.85;
+        }
+
+        .email-actions {
+            position: absolute;
+            left: calc(100% + 10px);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            vertical-align: middle;
+        }
+
+        .btn-icon:hover {
+            background-color: #e2e8f0;
+            border-color: #94a3b8;
+            color: #1e293b;
+        }
+
+        .btn-icon svg {
+            display: block;
+        }
+
+        /* Всплывающий тост */
+        .share-toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #0f172a;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .share-toast.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Значки дат */
@@ -229,6 +321,12 @@
         }
 
         /* Адаптивность для телефонов */
+        @media (max-width: 900px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             header h1 { font-size: 1.6rem; }
             nav {
@@ -236,10 +334,10 @@
                 overflow-x: auto;
                 white-space: nowrap;
                 -webkit-overflow-scrolling: touch;
-                scrollbar-width: none; /* скрываем полосу прокрутки в Firefox */
+                scrollbar-width: none;
             }
             nav::-webkit-scrollbar {
-                display: none; /* скрываем полосу прокрутки в Chrome/Safari */
+                display: none;
             }
             nav a {
                 display: inline-block;
@@ -251,6 +349,21 @@
                 border-bottom: none;
             }
             .btn { display: block; margin: 10px auto; width: 100%; max-width: 300px; }
+            .share-toast {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .email-actions {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
@@ -262,7 +375,7 @@
             Стерлитамакский филиал УУНиТ &bull; Естественнонаучный факультет
         </p>
         <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
-        <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37</p>
+        <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37 (ФМиИТ)</p>
         <div>
             <a class="btn" href="#registration">Подать заявку</a> 
             <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener">Первое информационное письмо</a>
@@ -272,6 +385,9 @@
     </div>
 </header>
 
+<!-- Тост-уведомление при копировании -->
+<div id="shareToast" class="share-toast">Скопировано в буфер!</div>
+
 <nav>
     <a href="#about">О конференции</a> 
     <a href="#dates">Ключевые даты</a> 
@@ -280,7 +396,7 @@
     <a href="#rules">Оформление тезисов</a> 
     <a href="#committee">Комитеты</a> 
     <a href="#registration">Регистрация</a> 
-    <a href="#contacts">Контакты</a>
+    <a href="#contacts">Контакты и карта</a>
 </nav>
 
 <div class="container">
@@ -360,7 +476,7 @@
                 <li><strong>Заочное / онлайн участие:</strong> 800 рублей.</li>
             </ul>
             <p style="margin-top: 15px; color: var(--text-muted);">Реквизиты и порядок оплаты организационного взноса направляются авторам после подтверждения принятия материалов.</p>
-            
+
             <!-- Акцентный блок с памяткой перед оплатой -->
             <div style="background-color: #fff8e1; border-left: 4px solid #ffb300; padding: 15px 20px; border-radius: 6px; margin: 20px 0 15px 0;">
                 <p style="margin: 0 0 10px 0; font-weight: bold; color: #b78103;">
@@ -415,18 +531,52 @@
         <h2>Регистрация и подача материалов</h2>
         <div class="card" style="text-align: center; padding: 40px 20px;">
             <p style="margin-top: 10px; font-size: 1.1rem;">Отправьте заявку и материалы напрямую на электронную почту оргкомитета:</p>
-            <p style="margin-top: 15px;"><a style="color: var(--accent); font-weight: bold; font-size: 1.3rem; text-decoration: none;" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a></p>
+            
+            <div class="email-wrapper">
+                <a class="email-link" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a>
+                <div class="email-actions">
+                    <button type="button" class="btn-icon" onclick="copyEmail()" title="Скопировать адрес почты" aria-label="Скопировать e-mail">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon" onclick="shareConference()" title="Поделиться ссылкой на сайт" aria-label="Поделиться">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="contacts">
-        <h2>Контакты</h2>
-        <div class="card">
-            <p><strong>Адрес:</strong> <a href="https://yandex.ru/maps/?text=Стерлитамак+проспект+Ленина+37" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37, СФ УУНиТ</a></p>
-            <p><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
-            <p><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru">phcs-struust@mail.ru</a></p>
-            <p><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
-            <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+        <h2>Контакты и место проведения</h2>
+        <div class="contacts-grid">
+            <div class="card">
+                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
+                <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
+                <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
+                <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
+                <p style="margin-bottom: 0;"><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+            </div>
+            
+            <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; min-height: 380px;">
+                <iframe 
+                    src="https://yandex.ru/map-widget/v1/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    style="border: none; width: 100%; height: 100%; min-height: 380px; flex-grow: 1; display: block;"
+                    title="УУНиТ, факультет математики и информационных технологий (пр. Ленина, 37)">
+                </iframe>
+            </div>
         </div>
     </section>
 </div>
@@ -435,6 +585,49 @@
     <p><a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.95rem;">↑ Наверх к началу страницы</a></p>
     <p style="margin-top: 10px;">&copy; 2026 Кафедра общей и теоретической физики СФ УУНиТ. Все права защищены.</p>
 </footer>
+
+<script>
+function showToast(text) {
+    const toast = document.getElementById('shareToast');
+    toast.textContent = text;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+function copyEmail() {
+    navigator.clipboard.writeText('phcs-struust@mail.ru').then(() => {
+        showToast('Почта phcs-struust@mail.ru скопирована!');
+    }).catch(() => {
+        alert('Почта: phcs-struust@mail.ru');
+    });
+}
+
+function shareConference() {
+    const shareData = {
+        title: 'ФКС-2026: Физика конденсированного состояния и её приложения',
+        text: 'VI Международная научно-практическая конференция «ФКС-2026» (24–26 сентября 2026 г., СФ УУНиТ, г. Стерлитамак).',
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch((err) => {
+            if (err.name !== 'AbortError') {
+                copyLink();
+            }
+        });
+    } else {
+        copyLink();
+    }
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Ссылка на сайт скопирована в буфер!');
+    }).catch(() => {
+        alert('Ссылка: ' + window.location.href);
+    });
+}
+</script>
 
 </body>
 </html>
