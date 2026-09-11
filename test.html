@@ -697,4 +697,323 @@
 
 <div class="container">
     <!-- О конференции -->
-    <section id="about" styl
+    <section id="about" style="margin-bottom: 50px;">
+        <h2>ℹ️ О конференции</h2>
+        <div class="card">
+            <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
+            <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
+            <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
+        </div>
+    </section>
+
+    <!-- Ключевые даты -->
+    <section id="dates" style="margin-bottom: 50px;">
+        <h2>📅 Ключевые даты</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="date-badge">до 14 сентября 2026 г.</span>
+                <h3>Приём заявок</h3>
+                <p>Окончание приёма регистрационных форм участников конференции.</p>
+            </div>
+            <div class="card">
+                <span class="date-badge">до 14 сентября 2026 г.</span>
+                <h3>Приём тезисов</h3>
+                <p>Приём текстов докладов и статей в формате docx для публикации в сборнике.</p>
+            </div>
+            <div class="card">
+                <span class="date-badge" style="background-color: var(--primary-light); color: var(--primary);">24&ndash;26 сентября 2026 г.</span>
+                <h3>Дни конференции</h3>
+                <p>Пленарные заседания, секционные доклады, дискуссии и подведение итогов.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секции с живым поиском -->
+    <section id="sections" style="margin-bottom: 50px;">
+        <h2>🔬 Научные направления и секции</h2>
+        
+        <!-- Поиск секций -->
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="section-search" class="search-input" placeholder="Найти секцию по названию или теме (например: термодинамика, экология, наноматериалы)...">
+        </div>
+
+        <div class="grid" id="sections-grid">
+            <div class="card section-card">
+                <h3>1. Механика сплошных сред</h3>
+                <p>Гидродинамика, механика деформируемого твердого тела, фильтрация и теплофизика пористых сред.</p>
+            </div>
+            <div class="card section-card">
+                <h3>2. Структура и свойства конденсированного состояния</h3>
+                <p>Кристаллическая структура, фазовые переходы и кинетика процессов в твердых телах.</p>
+            </div>
+            <div class="card section-card">
+                <h3>3. Физика суперионных проводников и полупроводников</h3>
+                <p>Ионный перенос, халькогениды, полупроводниковые структуры и функциональные материалы.</p>
+            </div>
+            <div class="card section-card">
+                <h3>4. Физика магнитных явлений. Магнетизм и спинтроника</h3>
+                <p>Мультиферроики, спинтроника, магнитные свойства и спектроскопия.</p>
+            </div>
+            <div class="card section-card">
+                <h3>5. Неравновесная термодинамика. Фазовые переходы и критические явления</h3>
+                <p>Теория неравновесных процессов, термодинамика фазовых превращений и критические явления.</p>
+            </div>
+            <div class="card section-card">
+                <h3>6. Математическая физика и искусственный интеллект</h3>
+                <p>Математическое моделирование физических процессов, машинное обучение и численные методы.</p>
+            </div>
+            <div class="card section-card">
+                <h3>7. Материаловедение, наноматериалы, нанокомпозиты</h3>
+                <p>Нанотехнологии, функциональные наноматериалы, нанокомпозиты и полимерные структуры.</p>
+            </div>
+            <div class="card section-card">
+                <h3>8. Экология, биология и медицинская физика</h3>
+                <p>Биофизика, экологический мониторинг, спектральный анализ биомолекул и медицинская физика.</p>
+            </div>
+        </div>
+        <p id="no-sections-msg" style="display: none; text-align: center; color: var(--text-muted); padding: 20px;">Секций по данному запросу не найдено.</p>
+    </section>
+
+    <!-- Оргвзнос и интерактивный калькулятор -->
+    <section id="publication" style="margin-bottom: 50px;">
+        <h2>💳 Условия участия и оргвзнос</h2>
+        <div class="card">
+            <ul class="styled-list">
+                <li><strong>Очное участие:</strong> 1 600 рублей (включает комплект участника и публикацию).</li>
+                <li><strong>Заочное / онлайн участие:</strong> 800 рублей.</li>
+            </ul>
+            <p style="margin-top: 15px; color: var(--text-muted);">Реквизиты и порядок оплаты организационного взноса направляются авторам после подтверждения принятия материалов.</p>
+            
+            <!-- Интерактивный калькулятор -->
+            <div class="calc-box">
+                <h4 style="margin-bottom: 12px; color: var(--primary);">🧮 Интерактивный калькулятор оргвзноса:</h4>
+                <div class="calc-row">
+                    <div class="calc-group">
+                        <label>Форма участия:</label>
+                        <select id="calc-format" onchange="calcTotal()">
+                            <option value="1600">Очное участие (1 600 ₽)</option>
+                            <option value="800">Заочное / Онлайн участие (800 ₽)</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Количество докладов/статей:</label>
+                        <input type="number" id="calc-count" value="1" min="1" max="10" oninput="calcTotal()">
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <span>Итого к оплате:</span>
+                    <span class="calc-sum" id="calc-total">1 600 ₽</span>
+                </div>
+            </div>
+
+            <!-- Акцентная памятка -->
+            <div class="alert-memo">
+                <p style="margin: 0 0 10px 0; font-weight: bold; color: #b78103;">
+                    ⚠️ Важно: перед совершением оплаты обязательно ознакомьтесь с инструкцией!
+                </p>
+                <a class="btn" style="background-color: #ff9800; border-color: #ff9800; color: white; margin: 0;" href="Памятка.pdf" target="_blank" rel="noopener">📄 Памятка по оплате (PDF)</a>
+            </div>
+
+            <!-- Кнопки документов -->
+            <div style="margin-top: 15px;">
+                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener">📥 Договор публичной оферты (PDF)</a>
+                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener">📥 Квитанция на оплату оргвзноса (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Требования -->
+    <section id="rules" style="margin-bottom: 50px;">
+        <h2>📄 Требования к оформлению тезисов</h2>
+        <div class="card">
+            <ul class="styled-list">
+                <li>Для публикации принимаются статьи объемом <strong>до 5 страниц</strong>, оформленные в программе <strong>MS Word</strong>.</li>
+                <li><strong>Параметры страницы:</strong> ориентация альбомная, 2 страницы на листе. Поля: верхнее/нижнее &mdash; 2,5 см, снаружи/внутри &mdash; 2,1 см.</li>
+                <li><strong>Шрифт:</strong> 10 пунктов Times New Roman, для сносок &mdash; 9.</li>
+                <li><strong>Абзац:</strong> междустрочный интервал одинарный, отступ первой строки 0,75 см; рисунки и таблицы вставлены в текст; перенос слов автоматический; страницы не нумеровать.</li>
+                <li><strong>Формулы:</strong> набираются в редакторе MS Equation или MathType.</li>
+                <li><strong>Структура заголовка:</strong> первая строка слева &mdash; УДК; вторая строка &mdash; Фамилии авторов полужирным шрифтом по центру; третья строка &mdash; название статьи по центру полужирным шрифтом прописными буквами. Далее курсивом &mdash; аннотация к статье (не более 5 строк) и ключевые слова (недопустимы формулы и спецсимволы). Фамилии авторов, название, аннотацию и ключевые слова продублировать на английском языке.</li>
+                <li><strong>Библиографический список:</strong> оформляется в соответствии с образцом в алфавитном порядке. Оформлять ссылки на соответствующий источник списка литературы следует в тексте в квадратных скобках. Не допускается использование автоматических постраничных ссылок.</li>
+                <li><strong>Именование файлов:</strong> <code>ФамилияИО_№секции.docx</code> и <code>заявка_ФамилияИО_№секции.docx</code>.</li>
+            </ul>
+            <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
+                Статья должна быть тщательно отредактирована. Все материалы печатаются в авторской редакции. Авторы несут ответственность за достоверность материала, изложенного в своих статьях. Статьи, оформленные с нарушениями указанных требований, могут быть отклонены.
+            </p>
+            <div style="margin-top: 20px;">
+                <a class="btn" style="margin-top: 0;" href="template_2026.docx" download>📥 Скачать шаблон тезисов (.docx)</a>
+                <a class="btn" style="margin-top: 0;" href="template_application_2026.docx" download>📥 Скачать шаблон заявки (.docx)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Комитеты -->
+    <section id="committee" style="margin-bottom: 50px;">
+        <h2>👥 Организационный и программный комитеты</h2>
+        <div class="card">
+            <div class="committee-list">
+                <p><strong>Председатель оргкомитета:</strong> проф., д.ф.н. Сыров И. А. (СФ УУНиТ, Стерлитамак)</p>
+                <p><strong>Председатель программного комитета:</strong> д.т.н., проф. Самхарадзе Т. Г. (&laquo;Научтехлитиздат&raquo;, Москва)</p>
+                <p><strong>Сопредседатель программного комитета:</strong> проф., д.ф.-м.н. Биккулова Н. Н. (СФ УУНиТ, Стерлитамак)</p>
+                <p><strong>Ответственный секретарь:</strong> доц., к.ф.-м.н. Зеленова М. А. (СФ УУНиТ, Стерлитамак)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Регистрация -->
+    <section id="registration" style="margin-bottom: 50px;">
+        <h2>📨 Регистрация и подача материалов</h2>
+        <div class="card" style="text-align: center; padding: 35px 20px;">
+            <p style="font-size: 1.1rem;">Отправьте заявку и материалы напрямую на электронную почту оргкомитета:</p>
+            <p style="margin-top: 15px; margin-bottom: 12px;">
+                <a style="color: var(--accent); font-weight: bold; font-size: 1.35rem; text-decoration: none;" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a>
+            </p>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <button type="button" onclick="navigator.clipboard.writeText('phcs-struust@mail.ru'); this.innerText='✓ Скопировано!'; setTimeout(()=>this.innerText='📋 Скопировать email', 2000);" 
+                        style="background: var(--card-bg); border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; color: var(--primary); font-weight: 500; transition: all 0.2s;">
+                    📋 Скопировать email
+                </button>
+                <button type="button" onclick="navigator.share ? navigator.share({title: 'Конференция ФКС-2026', url: window.location.href}) : navigator.clipboard.writeText(window.location.href); alert('Ссылка на сайт скопирована!');" 
+                        style="background: var(--card-bg); border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; color: var(--text-muted); transition: all 0.2s;">
+                    🔗 Поделиться сайтом
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Часто задаваемые вопросы -->
+    <section id="faq" style="margin-bottom: 50px;">
+        <h2>❓ Часто задаваемые вопросы</h2>
+        <div class="card">
+            <details class="faq-item">
+                <summary>Выдаются ли официальные сертификаты участников?</summary>
+                <p>Да, всем очным и дистанционным докладчикам выдаются именные сертификаты участников международной конференции.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Где будет опубликован и проиндексирован сборник?</summary>
+                <p>Сборник трудов конференции будет издан в электронном виде и полностью проиндексирован в базе РИНЦ. Лучшие статьи будут рекомендованы к публикации в журналах ВАК.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Когда появится ссылка на трансляцию в Яндекс Телемост?</summary>
+                <p>Прямая ссылка для подключения к трансляции будет размещена прямо в кнопке в шапке сайта и разослана на почту зарегистрированным авторам 23 сентября.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Контакты и интерактивная карта -->
+    <section id="contacts">
+        <h2>📍 Контакты и место проведения</h2>
+        <div class="card">
+            <p><strong>Адрес кафедры:</strong> <a href="https://yandex.ru/maps/?text=Стерлитамак+проспект+Ленина+37" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 500;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37, СФ УУНиТ</a></p>
+            <p style="margin-top: 6px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики (ЕНФ)</p>
+            <p style="margin-top: 6px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary);">phcs-struust@mail.ru</a></p>
+            <p style="margin-top: 6px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary);">+7 (3473) 33-98-65</a> (доб. 316)</p>
+            <p style="margin-top: 6px;"><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary);">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+
+            <!-- Интерактивная карта Яндекс -->
+            <div style="margin-top: 20px;">
+                <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D1%82%D0%B5%D1%80%D0%BB%D0%B8%D1%82%D0%B0%D0%BC%D0%B0%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0%2C%2037&z=16" frameborder="0" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Плавающая кнопка возврата Наверх -->
+<button id="back-to-top" title="Наверх">↑</button>
+
+<footer>
+    <p><a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.95rem;">↑ Наверх к началу страницы</a></p>
+    <p style="margin-top: 10px;">&copy; 2026 Кафедра общей и теоретической физики СФ УУНиТ. Все права защищены.</p>
+</footer>
+
+<!-- Скрипты интерактива -->
+<script>
+    // 1. Полоса прогресса скролла
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+
+        // Кнопка Наверх
+        const btt = document.getElementById('back-to-top');
+        if (winScroll > 300) {
+            btt.classList.add('show');
+        } else {
+            btt.classList.remove('show');
+        }
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 2. Таймер дедлайна (14 сентября 2026, 23:59:59)
+    const deadline = new Date(2026, 8, 14, 23, 59, 59).getTime(); // месяц 8 = сентябрь в JS
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = deadline - now;
+        if (diff > 0) {
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('cd-days').innerText = String(d).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(h).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(m).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(s).padStart(2, '0');
+        } else {
+            document.getElementById('cd-days').innerText = '00';
+            document.getElementById('cd-hours').innerText = '00';
+            document.getElementById('cd-minutes').innerText = '00';
+            document.getElementById('cd-seconds').innerText = '00';
+        }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 3. Калькулятор оргвзноса
+    function calcTotal() {
+        const formatPrice = parseInt(document.getElementById('calc-format').value) || 0;
+        const count = parseInt(document.getElementById('calc-count').value) || 1;
+        const total = formatPrice * count;
+        document.getElementById('calc-total').innerText = total.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    // 4. Живой поиск по научным секциям
+    document.getElementById('section-search').addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.section-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if (text.includes(query)) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        document.getElementById('no-sections-msg').style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+
+    // 5. Переключатель Тёмной/Светлой темы
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    // Проверяем сохранённую тему
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeIcon.innerText = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        themeIcon.innerText = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+</script>
+
+</body>
+</html>
