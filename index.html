@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ФКС-2026: Физика конденсированного состояния</title>
-    <!-- Для светлой темы браузера (показываем тёмную иконку) -->
-    <link rel="icon" href="favicon-purple.png" media="(prefers-color-scheme: light)">
+    <meta name="description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения» (ФКС-2026), 24–26 сентября 2026 г., СФ УУНиТ.">
 
-    <!-- Для тёмной темы браузера (показываем белую иконку) -->
+    <!-- Open Graph для красивого предпросмотра при шеринге в Telegram / VK -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Конференция ФКС-2026 (24–26 сентября)">
+    <meta property="og:description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения». Прием заявок до 14 сентября 2026 г.">
+
+    <!-- Фавиконки под светлую и тёмную темы -->
+    <link rel="icon" href="favicon-purple.png" media="(prefers-color-scheme: light)">
     <link rel="icon" href="favicon-white.png" media="(prefers-color-scheme: dark)">
+
     <style>
         :root {
-            --primary: #004488;      /* Основной синий цвет */
+            --primary: #004488;
             --primary-hover: #003366;
-            --accent: #d9534f;       /* Цвет акцентных кнопок */
-            --bg: #f4f7f6;           /* Фон страницы */
+            --accent: #d9534f;
+            --accent-hover: #c9302c;
+            --btn-blue: #0066cc;
+            --btn-blue-hover: #0052a3;
+            --bg: #f4f7f6;
             --text: #333333;
             --text-muted: #6c757d;
             --card-bg: #ffffff;
@@ -30,15 +39,28 @@
             scroll-behavior: smooth;
         }
 
-        section {
-            scroll-margin-top: 70px;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
+        }
+
+        /* Общий ритм секций */
+        section {
+            scroll-margin-top: 70px;
+            margin-bottom: 50px;
+        }
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
         }
 
         /* Шапка сайта */
@@ -47,6 +69,19 @@
             color: white;
             text-align: center;
             padding: 60px 20px;
+        }
+
+        /* Убираем внутренний паддинг контейнера в шапке, чтобы не смещать текст вниз */
+        header .container {
+            padding: 0;
+        }
+
+        .header-tagline {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
         }
 
         header h1 {
@@ -61,7 +96,7 @@
             opacity: 0.9;
         }
 
-        /* Навигация (меню) */
+        /* Навигация */
         nav {
             background: white;
             padding: 15px;
@@ -86,29 +121,20 @@
             color: var(--accent);
         }
 
-        /* Основной контейнер */
+        /* Контейнер */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        section h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        /* Сетка для карточек */
+        /* Сетки */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        /* Сетка для контактов и карты */
         .contacts-grid {
             display: grid;
             grid-template-columns: 1fr 1.25fr;
@@ -116,7 +142,7 @@
             align-items: stretch;
         }
 
-        /* Карточки (секции, даты) */
+        /* Карточки */
         .card {
             background: var(--card-bg);
             border-radius: 8px;
@@ -136,7 +162,7 @@
             font-size: 1.2rem;
         }
 
-        /* Исчезающие синие полоски на секциях при ховере */
+        /* Исчезающая синяя полоска на карточках секций */
         #sections .card {
             border-left: 4px solid transparent;
             transition: transform 0.3s, box-shadow 0.3s, border-left-color 0.3s;
@@ -146,7 +172,7 @@
             border-left-color: var(--primary);
         }
 
-        /* Кнопки с идеальной центровкой содержимого */
+        /* Базовые стили кнопок */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -159,24 +185,24 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.3s, transform 0.2s, border-color 0.3s;
             border: 2px solid var(--accent);
-            margin: 5px;
+            margin: 5px 5px 5px 0;
             font-family: inherit;
             font-size: 1rem;
             cursor: pointer;
         }
 
         .btn:hover {
-            background-color: #c9302c;
-            border-color: #c9302c;
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
             transform: scale(1.02);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: white;
-            border: 2px solid white;
+            border-color: white;
         }
 
         .btn-secondary:hover {
@@ -187,32 +213,36 @@
 
         .btn-green {
             background-color: #28a745;
-            color: white;
-            border: 2px solid #28a745;
+            border-color: #28a745;
         }
 
         .btn-green:hover {
             background-color: #218838;
             border-color: #1e7e34;
-            color: white;
-            transform: scale(1.02);
         }
 
-        /* Кнопки скачивания Word (.docx) в цвет правой части шапки */
         .btn-blue {
-            background-color: #0066cc;
-            color: white;
-            border: 2px solid #0066cc;
+            background-color: var(--btn-blue);
+            border-color: var(--btn-blue);
         }
 
         .btn-blue:hover {
-            background-color: #0052a3;
-            border-color: #0052a3;
-            color: white;
-            transform: scale(1.02);
+            background-color: var(--btn-blue-hover);
+            border-color: var(--btn-blue-hover);
         }
 
-        /* Центрированный блок почты с компактными кнопками-значками */
+        .btn-notice {
+            background-color: #ff9800;
+            border-color: #ff9800;
+            margin: 0;
+        }
+
+        .btn-notice:hover {
+            background-color: #f57c00;
+            border-color: #f57c00;
+        }
+
+        /* Центрированный блок почты со значками */
         .email-wrapper {
             position: relative;
             display: inline-block;
@@ -267,7 +297,7 @@
             display: block;
         }
 
-        /* Всплывающий тост */
+        /* Уведомление тост */
         .share-toast {
             visibility: hidden;
             min-width: 250px;
@@ -293,7 +323,7 @@
             transform: translateY(0);
         }
 
-        /* Значки дат */
+        /* Значки дат и списки */
         .date-badge {
             background-color: #e9ecef;
             color: var(--primary);
@@ -305,7 +335,11 @@
             margin-bottom: 15px;
         }
 
-        /* Списки */
+        .date-badge-urgent {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
         .styled-list {
             list-style-type: none;
         }
@@ -327,6 +361,20 @@
             top: 4px;
         }
 
+        .notice-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0 15px 0;
+        }
+
+        .notice-box-title {
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: #b78103;
+        }
+
         .committee-list p {
             margin-bottom: 10px;
             padding-bottom: 10px;
@@ -339,6 +387,15 @@
             padding-bottom: 0;
         }
 
+        .map-frame {
+            border: none;
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            flex-grow: 1;
+            display: block;
+        }
+
         /* Подвал */
         footer {
             background: #2c3e50;
@@ -348,7 +405,7 @@
             margin-top: 40px;
         }
 
-        /* Адаптивность для телефонов */
+        /* Адаптивность для мобильных */
         @media (max-width: 900px) {
             .contacts-grid {
                 grid-template-columns: 1fr;
@@ -374,14 +431,9 @@
                 background-color: #f1f5f9;
                 border-radius: 20px;
                 font-size: 0.85rem;
-                border-bottom: none;
             }
-            /* Центрирование и правильные пропорции кнопок на мобильных */
             .btn { 
                 display: flex; 
-                align-items: center; 
-                justify-content: center; 
-                text-align: center; 
                 margin: 10px auto; 
                 width: 100%; 
                 max-width: 320px; 
@@ -407,23 +459,30 @@
 </head>
 <body>
 
+<!-- Скрытый блок переиспользуемых SVG-символов (DRY) -->
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-word" viewBox="0 0 24 24">
+        <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff"/>
+        <path d="M17 2V6H21" fill="#cbd5e1"/>
+        <rect x="2" y="6" width="13" height="13" rx="2" fill="#185ABD"/>
+        <polyline points="4.5 9, 6.5 16, 8.5 11.8, 10.5 16, 12.5 9" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+</svg>
+
 <header>
-    <div class="container" style="padding: 0;">
-        <p style="text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; margin-bottom: 10px; opacity: 0.8;">
-            Стерлитамакский филиал УУНиТ &bull; Естественнонаучный факультет
-        </p>
+    <div class="container">
+        <p class="header-tagline">Стерлитамакский филиал УУНиТ &bull; Естественнонаучный факультет</p>
         <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
         <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37</p>
         <div>
             <a class="btn" href="#registration">Подать заявку</a> 
-            <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener">Первое информационное письмо</a>
-            <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener">Второе информационное письмо</a>
+            <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
+            <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
             <a class="btn btn-secondary" href="#" onclick="return false;" style="cursor: default;" title="Ссылка на подключение будет опубликована ближе к началу конференции">Яндекс Телемост (появится позднее)</a>
         </div>
     </div>
 </header>
 
-<!-- Тост-уведомление при копировании -->
 <div id="shareToast" class="share-toast">Скопировано в буфер!</div>
 
 <nav>
@@ -438,7 +497,7 @@
 </nav>
 
 <div class="container">
-    <section id="about" style="margin-bottom: 50px;">
+    <section id="about">
         <h2>О конференции</h2>
         <div class="card">
             <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
@@ -447,16 +506,16 @@
         </div>
     </section>
 
-    <section id="dates" style="margin-bottom: 50px;">
+    <section id="dates">
         <h2>Ключевые даты</h2>
         <div class="grid">
             <div class="card">
-                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
+                <span class="date-badge date-badge-urgent">до 14 сентября 2026 г.</span>
                 <h3>Приём заявок</h3>
                 <p>Окончание приёма регистрационных форм участников конференции.</p>
             </div>
             <div class="card">
-                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
+                <span class="date-badge date-badge-urgent">до 14 сентября 2026 г.</span>
                 <h3>Приём тезисов</h3>
                 <p>Приём текстов докладов и статей в формате docx для публикации в сборнике.</p>
             </div>
@@ -468,7 +527,7 @@
         </div>
     </section>
 
-    <section id="sections" style="margin-bottom: 50px;">
+    <section id="sections">
         <h2>Научные направления и секции</h2>
         <div class="grid">
             <div class="card">
@@ -506,7 +565,7 @@
         </div>
     </section>
 
-    <section id="publication" style="margin-bottom: 50px;">
+    <section id="publication">
         <h2>Условия участия и оргвзнос</h2>
         <div class="card">
             <ul class="styled-list">
@@ -515,22 +574,19 @@
             </ul>
             <p style="margin-top: 15px; color: var(--text-muted);">Реквизиты и порядок оплаты организационного взноса направляются авторам после подтверждения принятия материалов.</p>
 
-            <!-- Акцентный блок с памяткой перед оплатой -->
-            <div style="background-color: #fff8e1; border-left: 4px solid #ffb300; padding: 15px 20px; border-radius: 6px; margin: 20px 0 15px 0;">
-                <p style="margin: 0 0 10px 0; font-weight: bold; color: #b78103;">
-                    ⚠️ Важно: перед совершением оплаты обязательно ознакомьтесь с инструкцией!
-                </p>
-                <a class="btn" style="background-color: #ff9800; border-color: #ff9800; color: white; margin: 0;" href="Памятка.pdf" target="_blank" rel="noopener">Памятка по оплате (PDF)</a>
+            <div class="notice-box">
+                <p class="notice-box-title">⚠️ Важно: перед совершением оплаты обязательно ознакомьтесь с инструкцией!</p>
+                <a class="btn btn-notice" href="Памятка.pdf" target="_blank" rel="noopener noreferrer">Памятка по оплате (PDF)</a>
             </div>
 
             <div style="margin-top: 10px;">
-                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener">Договор публичной оферты (PDF)</a>
-                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener">Квитанция на оплату оргвзноса (PDF)</a>
+                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener noreferrer">Договор публичной оферты (PDF)</a>
+                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener noreferrer">Квитанция на оплату оргвзноса (PDF)</a>
             </div>
         </div>
     </section>
 
-    <section id="rules" style="margin-bottom: 50px;">
+    <section id="rules">
         <h2>Требования к оформлению тезисов</h2>
         <div class="card">
             <ul class="styled-list">
@@ -547,29 +603,19 @@
                 Статья должна быть тщательно отредактирована. Все материалы печатаются в авторской редакции. Авторы несут ответственность за достоверность материала, изложенного в своих статьях. Статьи, оформленные с нарушениями указанных требований, могут быть отклонены.
             </p>
             <div style="margin-top: 20px;">
-                <a class="btn btn-blue" style="margin-top: 0;" href="template_2026.docx" download>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
-                        <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff" />
-                        <path d="M17 2V6H21" fill="#cbd5e1" />
-                        <rect x="2" y="6" width="13" height="13" rx="2" fill="#185ABD" />
-                        <polyline points="4.5 9, 6.5 16, 8.5 11.8, 10.5 16, 12.5 9" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                <a class="btn btn-blue" href="template_2026.docx" download>
+                    <svg width="22" height="22" aria-hidden="true"><use href="#icon-word"/></svg>
                     <span>Скачать шаблон тезисов (.docx)</span>
                 </a>
-                <a class="btn btn-blue" style="margin-top: 0;" href="template_application_2026.docx" download>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
-                        <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff" />
-                        <path d="M17 2V6H21" fill="#cbd5e1" />
-                        <rect x="2" y="6" width="13" height="13" rx="2" fill="#185ABD" />
-                        <polyline points="4.5 9, 6.5 16, 8.5 11.8, 10.5 16, 12.5 9" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                <a class="btn btn-blue" href="template_application_2026.docx" download>
+                    <svg width="22" height="22" aria-hidden="true"><use href="#icon-word"/></svg>
                     <span>Скачать шаблон заявки (.docx)</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="committee" style="margin-bottom: 50px;">
+    <section id="committee">
         <h2>Организационный и программный комитеты</h2>
         <div class="card">
             <div class="committee-list">
@@ -581,7 +627,7 @@
         </div>
     </section>
 
-    <section id="registration" style="margin-bottom: 50px;">
+    <section id="registration">
         <h2>Регистрация и подача материалов</h2>
         <div class="card" style="text-align: center; padding: 40px 20px;">
             <p style="margin-top: 10px; font-size: 1.1rem;">Отправьте заявку и материалы напрямую на электронную почту оргкомитета:</p>
@@ -590,13 +636,13 @@
                 <a class="email-link" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a>
                 <div class="email-actions">
                     <button type="button" class="btn-icon" onclick="copyEmail()" title="Скопировать адрес почты" aria-label="Скопировать e-mail">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                         </svg>
                     </button>
                     <button type="button" class="btn-icon" onclick="shareConference()" title="Поделиться ссылкой на сайт" aria-label="Поделиться">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <circle cx="18" cy="5" r="3"></circle>
                             <circle cx="6" cy="12" r="3"></circle>
                             <circle cx="18" cy="19" r="3"></circle>
@@ -613,21 +659,19 @@
         <h2>Контакты и место проведения</h2>
         <div class="contacts-grid">
             <div class="card">
-                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
+                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
                 <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
                 <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
                 <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
-                <p style="margin-bottom: 0;"><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+                <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
             </div>
             
             <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; min-height: 380px;">
                 <iframe 
+                    class="map-frame"
                     src="https://yandex.ru/map-widget/v1/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" 
-                    width="100%" 
-                    height="100%" 
-                    frameborder="0" 
+                    loading="lazy"
                     allowfullscreen="true" 
-                    style="border: none; width: 100%; height: 100%; min-height: 380px; flex-grow: 1; display: block;"
                     title="УУНиТ, факультет математики и информационных технологий (пр. Ленина, 37)">
                 </iframe>
             </div>
@@ -641,11 +685,14 @@
 </footer>
 
 <script>
+let toastTimeout;
+
 function showToast(text) {
     const toast = document.getElementById('shareToast');
     toast.textContent = text;
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
 function copyEmail() {
