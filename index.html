@@ -136,9 +136,23 @@
             font-size: 1.2rem;
         }
 
-        /* Кнопки */
+        /* Исчезающие синие полоски на секциях при ховере */
+        #sections .card {
+            border-left: 4px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s, border-left-color 0.3s;
+        }
+
+        #sections .card:hover {
+            border-left-color: var(--primary);
+        }
+
+        /* Кнопки с идеальной центровкой содержимого */
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
             background-color: var(--accent);
             color: white;
             padding: 12px 25px;
@@ -180,6 +194,20 @@
         .btn-green:hover {
             background-color: #218838;
             border-color: #1e7e34;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* Кнопки скачивания Word (.docx) в цвет правой части шапки */
+        .btn-blue {
+            background-color: #0066cc;
+            color: white;
+            border: 2px solid #0066cc;
+        }
+
+        .btn-blue:hover {
+            background-color: #0052a3;
+            border-color: #0052a3;
             color: white;
             transform: scale(1.02);
         }
@@ -348,7 +376,17 @@
                 font-size: 0.85rem;
                 border-bottom: none;
             }
-            .btn { display: block; margin: 10px auto; width: 100%; max-width: 300px; }
+            /* Центрирование и правильные пропорции кнопок на мобильных */
+            .btn { 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                text-align: center; 
+                margin: 10px auto; 
+                width: 100%; 
+                max-width: 320px; 
+                padding: 12px 16px;
+            }
             .share-toast {
                 left: 20px;
                 right: 20px;
@@ -509,8 +547,24 @@
                 Статья должна быть тщательно отредактирована. Все материалы печатаются в авторской редакции. Авторы несут ответственность за достоверность материала, изложенного в своих статьях. Статьи, оформленные с нарушениями указанных требований, могут быть отклонены.
             </p>
             <div style="margin-top: 20px;">
-                <a class="btn" style="margin-top: 0;" href="template_2026.docx" download>Скачать шаблон тезисов (.docx)</a>
-                <a class="btn" style="margin-top: 0;" href="template_application_2026.docx" download>Скачать шаблон заявки (.docx)</a>
+                <a class="btn btn-blue" style="margin-top: 0;" href="template_2026.docx" download>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                        <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff" />
+                        <path d="M17 2V6H21" fill="#cbd5e1" />
+                        <rect x="2" y="6" width="13" height="13" rx="2" fill="#185ABD" />
+                        <polyline points="4.5 9, 6.5 16, 8.5 11.8, 10.5 16, 12.5 9" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Скачать шаблон тезисов (.docx)</span>
+                </a>
+                <a class="btn btn-blue" style="margin-top: 0;" href="template_application_2026.docx" download>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                        <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff" />
+                        <path d="M17 2V6H21" fill="#cbd5e1" />
+                        <rect x="2" y="6" width="13" height="13" rx="2" fill="#185ABD" />
+                        <polyline points="4.5 9, 6.5 16, 8.5 11.8, 10.5 16, 12.5 9" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Скачать шаблон заявки (.docx)</span>
+                </a>
             </div>
         </div>
     </section>
