@@ -3,50 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ФКС-2026: Физика конденсированного состояния (ТЕСТОВАЯ ВЕРСИЯ)</title>
-    
-    <!-- Open Graph превью для Telegram, VK, WhatsApp -->
-    <meta property="og:title" content="Конференция «ФКС-2026» | СФ УУНиТ">
-    <meta property="og:description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения». 24–26 сентября 2026 г., Стерлитамак.">
-    <meta property="og:url" content="https://phys-struust.github.io/phcs/test.html">
-    <meta property="og:type" content="website">
+    <title>ФКС-2026: Физика конденсированного состояния</title>
+    <!-- Для светлой темы браузера (показываем тёмную иконку) -->
+    <link rel="icon" href="favicon-purple.png" media="(prefers-color-scheme: light)">
 
-    <!-- Фавиконки -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>">
-
+    <!-- Для тёмной темы браузера (показываем белую иконку) -->
+    <link rel="icon" href="favicon-white.png" media="(prefers-color-scheme: dark)">
     <style>
         :root {
-            --primary: #004488;
+            --primary: #004488;      /* Основной синий цвет */
             --primary-hover: #003366;
-            --primary-light: #e6f0fa;
-            --accent: #d9534f;
-            --accent-hover: #c9302c;
-            --accent-glow: rgba(217, 83, 79, 0.4);
-            --success: #28a745;
-            --success-hover: #218838;
-            --warning-bg: #fff8e1;
-            --warning-border: #ffb300;
-            --bg: #f4f7f6;
+            --accent: #d9534f;       /* Цвет акцентных кнопок */
+            --bg: #f4f7f6;           /* Фон страницы */
+            --text: #333333;
+            --text-muted: #6c757d;
             --card-bg: #ffffff;
-            --text: #222222;
-            --text-muted: #666666;
-            --border: #e2e8f0;
-            --shadow: 0 4px 20px rgba(0,0,0,0.06);
-            --shadow-hover: 0 10px 30px rgba(0,0,0,0.12);
-        }
-
-        /* Тёмная тема */
-        body.dark-theme {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --primary-light: #1e293b;
-            --warning-bg: #292524;
-            --warning-border: #d97706;
-            --shadow: 0 4px 20px rgba(0,0,0,0.4);
-            --shadow-hover: 0 10px 30px rgba(0,0,0,0.6);
         }
 
         * {
@@ -60,7 +31,7 @@
         }
 
         section {
-            scroll-margin-top: 80px;
+            scroll-margin-top: 70px;
         }
 
         body {
@@ -68,266 +39,54 @@
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        /* Индикатор прогресса чтения */
-        #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #d9534f, #ff9800, #28a745);
-            width: 0%;
-            z-index: 1000;
-            transition: width 0.1s;
-        }
-
-        /* Шапка */
+        /* Шапка сайта */
         header {
-            background: linear-gradient(135deg, #002b5c 0%, #004488 50%, #0066cc 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #0066cc 100%);
             color: white;
             text-align: center;
-            padding: 50px 20px 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Декоративный фоновый круг */
-        header::after {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 250px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* Бейдж университета с логотипом */
-        .header-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            padding: 8px 18px;
-            border-radius: 50px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .header-brand svg {
-            width: 24px;
-            height: 24px;
-            fill: #ffd700;
+            padding: 60px 20px;
         }
 
         header h1 {
             font-size: 2.2rem;
-            margin-bottom: 15px;
+            margin: 20px 0;
             line-height: 1.3;
-            max-width: 950px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero-meta {
-            font-size: 1.15rem;
-            margin-bottom: 25px;
-            opacity: 0.95;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
 
-        .hero-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* Таймер обратного отсчёта до дедлайна */
-        .countdown-box {
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 12px;
-            padding: 15px 20px;
-            max-width: 520px;
-            margin: 0 auto 30px;
-        }
-
-        .countdown-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .timer-unit {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 8px 12px;
-            border-radius: 8px;
-            min-width: 60px;
-            text-align: center;
-        }
-
-        .timer-val {
-            font-size: 1.6rem;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .timer-lbl {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            opacity: 0.8;
-            margin-top: 4px;
-        }
-
-        /* Супер-кнопки */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background-color: var(--accent);
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            cursor: pointer;
-            margin: 6px;
-            box-shadow: 0 4px 12px var(--accent-glow);
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--accent-glow);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn-green {
-            background-color: var(--success);
-            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.35);
-        }
-
-        .btn-green:hover {
-            background-color: var(--success-hover);
-            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.45);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.7);
-            box-shadow: none;
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            border-color: white;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Навигация */
+        /* Навигация (меню) */
         nav {
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border);
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-inner {
-            max-width: 1100px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            overflow-x: auto;
-            white-space: nowrap;
-            gap: 6px;
-            scrollbar-width: none;
-        }
-
-        .nav-links::-webkit-scrollbar {
-            display: none;
         }
 
         nav a {
-            color: var(--text);
+            color: var(--primary);
             text-decoration: none;
-            padding: 7px 14px;
-            border-radius: 20px;
+            margin: 0 12px;
             font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.2s;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 5px 0;
         }
 
         nav a:hover {
-            color: var(--primary);
-            background-color: var(--primary-light);
+            color: var(--accent);
         }
 
-        /* Кнопка переключения темы */
-        .theme-toggle-btn {
-            background: none;
-            border: 1px solid var(--border);
-            padding: 7px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            color: var(--text);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s;
-            margin-left: 10px;
-            flex-shrink: 0;
-        }
-
-        .theme-toggle-btn:hover {
-            background-color: var(--primary-light);
-            border-color: var(--primary);
-        }
-
-        /* Контейнер */
+        /* Основной контейнер */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -340,232 +99,269 @@
             padding-bottom: 10px;
             margin-bottom: 25px;
             font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        body.dark-theme section h2 {
-            color: #60a5fa;
-            border-bottom-color: #60a5fa;
+        /* Сетка для карточек */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
-        /* Карточки */
+        /* Сетка для контактов и карты */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        /* Карточки (секции, даты) */
         .card {
             background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            padding: 28px;
-            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 25px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .grid .card {
-            margin-bottom: 0;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .card h3 {
             color: var(--primary);
             margin-bottom: 12px;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
         }
 
-        body.dark-theme .card h3 {
-            color: #93c5fd;
+        /* Стилизация карточек секций с нумерацией */
+        #sections .card {
+            position: relative;
+            border-left: 3px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s, border-left-color 0.3s;
         }
 
-        /* Бейджи дат */
+        #sections .card:hover {
+            border-left-color: var(--primary);
+        }
+
+        .card-num {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            border: 2px solid var(--accent);
+            margin: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c9302c;
+            border-color: #c9302c;
+            transform: scale(1.02);
+        }
+
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+            border: 2px solid #28a745;
+        }
+
+        .btn-green:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* Ссылка календаря (.ics) */
+        .btn-calendar {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: var(--primary);
+            text-decoration: none;
+            background: #e0f2fe;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-calendar:hover {
+            background: #bae6fd;
+        }
+
+        /* Карточки файлов для скачивания (шаблоны) */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .file-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .file-card:hover {
+            background: #f1f5f9;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .file-badge {
+            background: #2563eb;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 4px 6px;
+            border-radius: 4px;
+        }
+
+        .file-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .file-info strong {
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .file-info span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .file-icon {
+            color: #64748b;
+        }
+
+        /* Центрированный блок почты с компактными кнопками-значками */
+        .email-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .email-link {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .email-link:hover {
+            opacity: 0.85;
+        }
+
+        .email-actions {
+            position: absolute;
+            left: calc(100% + 10px);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            vertical-align: middle;
+        }
+
+        .btn-icon:hover {
+            background-color: #e2e8f0;
+            border-color: #94a3b8;
+            color: #1e293b;
+        }
+
+        .btn-icon svg {
+            display: block;
+        }
+
+        /* Всплывающий тост */
+        .share-toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #0f172a;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .share-toast.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Значки дат */
         .date-badge {
-            background-color: #fee2e2;
-            color: #b91c1c;
-            padding: 6px 14px;
+            background-color: #e9ecef;
+            color: var(--primary);
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 14px;
-        }
-
-        /* Поле живого поиска секций */
-        .search-box {
-            position: relative;
-            margin-bottom: 25px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 14px 20px 14px 45px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 1rem;
-            transition: all 0.3s;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(0, 68, 136, 0.15);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        /* Калькулятор оргвзноса */
-        .calc-box {
-            background: var(--primary-light);
-            border: 2px dashed var(--primary);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 25px;
-        }
-
-        .calc-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 18px;
-        }
-
-        .calc-group {
-            flex: 1;
-            min-width: 220px;
-        }
-
-        .calc-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-        }
-
-        .calc-group select, .calc-group input {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .calc-result {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid var(--border);
-        }
-
-        .calc-sum {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        body.dark-theme .calc-sum {
-            color: #60a5fa;
-        }
-
-        /* Памятка по оплате */
-        .alert-memo {
-            background-color: var(--warning-bg);
-            border-left: 5px solid var(--warning-border);
-            padding: 18px 24px;
-            border-radius: 8px;
-            margin: 25px 0 20px;
-            box-shadow: var(--shadow);
-        }
-
-        /* Аккордеон FAQ */
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 14px 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-item summary {
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--primary);
-            cursor: pointer;
-            user-select: none;
-        }
-
-        body.dark-theme .faq-item summary {
-            color: #93c5fd;
-        }
-
-        .faq-item p {
-            margin-top: 10px;
-            color: var(--text-muted);
-        }
-
-        /* Интерактивная карта */
-        .map-frame {
-            width: 100%;
-            height: 320px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            margin-top: 15px;
-        }
-
-        /* Плавающая кнопка Наверх */
-        #back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 999;
-        }
-
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #back-to-top:hover {
-            background: var(--primary-hover);
-            transform: scale(1.1);
+            margin-bottom: 15px;
         }
 
         /* Списки */
@@ -593,7 +389,7 @@
         .committee-list p {
             margin-bottom: 10px;
             padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid #eee;
         }
 
         .committee-list p:last-child {
@@ -604,228 +400,212 @@
 
         /* Подвал */
         footer {
-            background: #111827;
-            color: #9ca3af;
+            background: #2c3e50;
+            color: #ecf0f1;
             text-align: center;
-            padding: 35px 20px;
-            margin-top: 50px;
-            font-size: 0.95rem;
+            padding: 25px 20px;
+            margin-top: 40px;
         }
 
-        footer a {
-            color: #cbd5e1;
-            text-decoration: none;
+        /* Адаптивность для телефонов */
+        @media (max-width: 900px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        footer a:hover {
-            color: white;
-        }
-
-        /* Адаптивность для мобильных */
         @media (max-width: 768px) {
             header h1 { font-size: 1.6rem; }
-            .header-brand { font-size: 0.75rem; padding: 6px 12px; }
-            .btn { width: 100%; margin: 6px 0; }
-            .nav-inner { flex-direction: row; }
-            .calc-row { flex-direction: column; align-items: stretch; }
-            #back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
+            nav {
+                padding: 10px 12px;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            nav::-webkit-scrollbar {
+                display: none;
+            }
+            nav a {
+                display: inline-block;
+                margin: 0 4px;
+                padding: 6px 14px;
+                background-color: #f1f5f9;
+                border-radius: 20px;
+                font-size: 0.85rem;
+                border-bottom: none;
+            }
+            .btn { display: block; margin: 10px auto; width: 100%; max-width: 300px; }
+            .share-toast {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .email-actions {
+                position: static;
+                transform: none;
+                justify-content: center;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Индикатор скролла -->
-<div id="progress-bar"></div>
-
 <header>
     <div class="container" style="padding: 0;">
-        <!-- Логотип филиала и герб -->
-        <div class="header-brand">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
-            </svg>
-            <span>СФ УУНиТ &bull; Естественнонаучный факультет</span>
-        </div>
-
+        <p style="text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; margin-bottom: 10px; opacity: 0.8;">
+            Стерлитамакский филиал УУНиТ &bull; Естественнонаучный факультет
+        </p>
         <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
-        
-        <div class="hero-meta">
-            <span>📅 24&ndash;26 сентября 2026 г.</span>
-            <span>📍 г. Стерлитамак, пр. Ленина, д. 37</span>
-        </div>
-
-        <!-- Таймер дедлайна -->
-        <div class="countdown-box">
-            <div class="countdown-title">⏳ До завершения приёма заявок (14 сентября) осталось:</div>
-            <div class="countdown-timer">
-                <div class="timer-unit"><div class="timer-val" id="cd-days">00</div><div class="timer-lbl">Дней</div></div>
-                <div class="timer-unit"><div class="timer-val" id="cd-hours">00</div><div class="timer-lbl">Часов</div></div>
-                <div class="timer-unit"><div class="timer-val" id="cd-minutes">00</div><div class="timer-lbl">Минут</div></div>
-                <div class="timer-unit"><div class="timer-val" id="cd-seconds">00</div><div class="timer-lbl">Секунд</div></div>
-            </div>
-        </div>
-
-        <!-- Супер-кнопки действий -->
+        <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37 (ФМиИТ)</p>
         <div>
-            <a class="btn" href="#registration">📝 Подать заявку</a> 
-            <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener">📄 Первое инфописьмо</a>
-            <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener">📄 Второе инфописьмо</a>
-            <a class="btn btn-secondary" href="#" onclick="alert('Ссылка на конференцию в Яндекс Телемост будет опубликована накануне открытия (23 сентября)!'); return false;">📹 Яндекс Телемост (скоро)</a>
+            <a class="btn" href="#registration">Подать заявку</a> 
+            <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener">Первое информационное письмо</a>
+            <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener">Второе информационное письмо</a>
         </div>
     </div>
 </header>
 
+<!-- Тост-уведомление при копировании -->
+<div id="shareToast" class="share-toast">Скопировано в буфер!</div>
+
 <nav>
-    <div class="nav-inner">
-        <div class="nav-links">
-            <a href="#about">О конференции</a> 
-            <a href="#dates">Ключевые даты</a> 
-            <a href="#sections">Секции</a> 
-            <a href="#publication">Оргвзнос</a> 
-            <a href="#rules">Требования</a> 
-            <a href="#committee">Комитеты</a> 
-            <a href="#registration">Регистрация</a> 
-            <a href="#faq">FAQ</a> 
-            <a href="#contacts">Контакты</a>
-        </div>
-        <!-- Переключатель тёмной темы -->
-        <button class="theme-toggle-btn" id="theme-toggle" title="Переключить тему">
-            <span id="theme-icon">🌙</span>
-        </button>
-    </div>
+    <a href="#about">О конференции</a> 
+    <a href="#dates">Ключевые даты</a> 
+    <a href="#sections">Секции</a> 
+    <a href="#publication">Условия и взносы</a> 
+    <a href="#rules">Оформление тезисов</a> 
+    <a href="#committee">Комитеты</a> 
+    <a href="#registration">Регистрация</a> 
+    <a href="#contacts">Контакты и карта</a>
 </nav>
 
 <div class="container">
-    <!-- О конференции -->
     <section id="about" style="margin-bottom: 50px;">
-        <h2>ℹ️ О конференции</h2>
+        <h2>О конференции</h2>
         <div class="card">
             <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
             <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
             <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
+            
+            <p style="margin-top: 18px; font-size: 0.9rem; color: var(--text-muted); background: #f8fafc; padding: 12px 16px; border-radius: 6px; border: 1px dashed #cbd5e1;">
+                <strong>Дистанционное участие:</strong> Ссылка для подключения через Яндекс Телемост будет опубликована на сайте и направлена зарегистрированным участникам накануне открытия конференции.
+            </p>
         </div>
     </section>
 
-    <!-- Ключевые даты -->
     <section id="dates" style="margin-bottom: 50px;">
-        <h2>📅 Ключевые даты</h2>
+        <h2>Ключевые даты</h2>
         <div class="grid">
             <div class="card">
-                <span class="date-badge">до 14 сентября 2026 г.</span>
+                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
                 <h3>Приём заявок</h3>
                 <p>Окончание приёма регистрационных форм участников конференции.</p>
             </div>
             <div class="card">
-                <span class="date-badge">до 14 сентября 2026 г.</span>
+                <span class="date-badge" style="background-color: #fee2e2; color: #b91c1c;">до 14 сентября 2026 г.</span>
                 <h3>Приём тезисов</h3>
                 <p>Приём текстов докладов и статей в формате docx для публикации в сборнике.</p>
             </div>
             <div class="card">
-                <span class="date-badge" style="background-color: var(--primary-light); color: var(--primary);">24&ndash;26 сентября 2026 г.</span>
+                <span class="date-badge">24&ndash;26 сентября 2026 г.</span>
                 <h3>Дни конференции</h3>
                 <p>Пленарные заседания, секционные доклады, дискуссии и подведение итогов.</p>
+                <div style="margin-top: 15px;">
+                    <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Конференция ФКС-2026%0ADESCRIPTION:VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения»%0ALOCATION:г. Стерлитамак, пр. Ленина, д. 37 (ФМиИТ)%0ADTSTART:20260924T040000Z%0ADTEND:20260926T140000Z%0AEND:VEVENT%0AEND:VCALENDAR" 
+                       download="FKS-2026.ics" 
+                       class="btn-calendar" 
+                       title="Скачать напоминание для Outlook / Apple / Google Календаря">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>Добавить в календарь (.ics)</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Секции с живым поиском -->
     <section id="sections" style="margin-bottom: 50px;">
-        <h2>🔬 Научные направления и секции</h2>
-        
-        <!-- Поиск секций -->
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="section-search" class="search-input" placeholder="Найти секцию по названию или теме (например: термодинамика, экология, наноматериалы)...">
-        </div>
-
-        <div class="grid" id="sections-grid">
-            <div class="card section-card">
-                <h3>1. Механика сплошных сред</h3>
+        <h2>Научные направления и секции</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 01</span>
+                <h3>Механика сплошных сред</h3>
                 <p>Гидродинамика, механика деформируемого твердого тела, фильтрация и теплофизика пористых сред.</p>
             </div>
-            <div class="card section-card">
-                <h3>2. Структура и свойства конденсированного состояния</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 02</span>
+                <h3>Структура и свойства конденсированного состояния</h3>
                 <p>Кристаллическая структура, фазовые переходы и кинетика процессов в твердых телах.</p>
             </div>
-            <div class="card section-card">
-                <h3>3. Физика суперионных проводников и полупроводников</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 03</span>
+                <h3>Физика суперионных проводников и полупроводников</h3>
                 <p>Ионный перенос, халькогениды, полупроводниковые структуры и функциональные материалы.</p>
             </div>
-            <div class="card section-card">
-                <h3>4. Физика магнитных явлений. Магнетизм и спинтроника</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 04</span>
+                <h3>Физика магнитных явлений. Магнетизм и спинтроника</h3>
                 <p>Мультиферроики, спинтроника, магнитные свойства и спектроскопия.</p>
             </div>
-            <div class="card section-card">
-                <h3>5. Неравновесная термодинамика. Фазовые переходы и критические явления</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 05</span>
+                <h3>Неравновесная термодинамика. Фазовые переходы и критические явления</h3>
                 <p>Теория неравновесных процессов, термодинамика фазовых превращений и критические явления.</p>
             </div>
-            <div class="card section-card">
-                <h3>6. Математическая физика и искусственный интеллект</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 06</span>
+                <h3>Математическая физика и искусственный интеллект</h3>
                 <p>Математическое моделирование физических процессов, машинное обучение и численные методы.</p>
             </div>
-            <div class="card section-card">
-                <h3>7. Материаловедение, наноматериалы, нанокомпозиты</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 07</span>
+                <h3>Материаловедение, наноматериалы, нанокомпозиты</h3>
                 <p>Нанотехнологии, функциональные наноматериалы, нанокомпозиты и полимерные структуры.</p>
             </div>
-            <div class="card section-card">
-                <h3>8. Экология, биология и медицинская физика</h3>
+            <div class="card">
+                <span class="card-num">СЕКЦИЯ 08</span>
+                <h3>Экология, биология и медицинская физика</h3>
                 <p>Биофизика, экологический мониторинг, спектральный анализ биомолекул и медицинская физика.</p>
             </div>
         </div>
-        <p id="no-sections-msg" style="display: none; text-align: center; color: var(--text-muted); padding: 20px;">Секций по данному запросу не найдено.</p>
     </section>
 
-    <!-- Оргвзнос и интерактивный калькулятор -->
     <section id="publication" style="margin-bottom: 50px;">
-        <h2>💳 Условия участия и оргвзнос</h2>
+        <h2>Условия участия и оргвзнос</h2>
         <div class="card">
             <ul class="styled-list">
                 <li><strong>Очное участие:</strong> 1 600 рублей (включает комплект участника и публикацию).</li>
                 <li><strong>Заочное / онлайн участие:</strong> 800 рублей.</li>
             </ul>
             <p style="margin-top: 15px; color: var(--text-muted);">Реквизиты и порядок оплаты организационного взноса направляются авторам после подтверждения принятия материалов.</p>
-            
-            <!-- Интерактивный калькулятор -->
-            <div class="calc-box">
-                <h4 style="margin-bottom: 12px; color: var(--primary);">🧮 Интерактивный калькулятор оргвзноса:</h4>
-                <div class="calc-row">
-                    <div class="calc-group">
-                        <label>Форма участия:</label>
-                        <select id="calc-format" onchange="calcTotal()">
-                            <option value="1600">Очное участие (1 600 ₽)</option>
-                            <option value="800">Заочное / Онлайн участие (800 ₽)</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Количество докладов/статей:</label>
-                        <input type="number" id="calc-count" value="1" min="1" max="10" oninput="calcTotal()">
-                    </div>
-                </div>
-                <div class="calc-result">
-                    <span>Итого к оплате:</span>
-                    <span class="calc-sum" id="calc-total">1 600 ₽</span>
-                </div>
-            </div>
 
-            <!-- Акцентная памятка -->
-            <div class="alert-memo">
+            <!-- Акцентный блок с памяткой перед оплатой -->
+            <div style="background-color: #fff8e1; border-left: 4px solid #ffb300; padding: 15px 20px; border-radius: 6px; margin: 20px 0 15px 0;">
                 <p style="margin: 0 0 10px 0; font-weight: bold; color: #b78103;">
                     ⚠️ Важно: перед совершением оплаты обязательно ознакомьтесь с инструкцией!
                 </p>
-                <a class="btn" style="background-color: #ff9800; border-color: #ff9800; color: white; margin: 0;" href="Памятка.pdf" target="_blank" rel="noopener">📄 Памятка по оплате (PDF)</a>
+                <a class="btn" style="background-color: #ff9800; border-color: #ff9800; color: white; margin: 0;" href="Памятка.pdf" target="_blank" rel="noopener">Памятка по оплате (PDF)</a>
             </div>
 
-            <!-- Кнопки документов -->
-            <div style="margin-top: 15px;">
-                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener">📥 Договор публичной оферты (PDF)</a>
-                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener">📥 Квитанция на оплату оргвзноса (PDF)</a>
+            <div style="margin-top: 10px;">
+                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener">Договор публичной оферты (PDF)</a>
+                <a class="btn" style="margin-top: 0;" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener">Квитанция на оплату оргвзноса (PDF)</a>
             </div>
         </div>
     </section>
 
-    <!-- Требования -->
     <section id="rules" style="margin-bottom: 50px;">
-        <h2>📄 Требования к оформлению тезисов</h2>
+        <h2>Требования к оформлению тезисов</h2>
         <div class="card">
             <ul class="styled-list">
                 <li>Для публикации принимаются статьи объемом <strong>до 5 страниц</strong>, оформленные в программе <strong>MS Word</strong>.</li>
@@ -840,16 +620,39 @@
             <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
                 Статья должна быть тщательно отредактирована. Все материалы печатаются в авторской редакции. Авторы несут ответственность за достоверность материала, изложенного в своих статьях. Статьи, оформленные с нарушениями указанных требований, могут быть отклонены.
             </p>
-            <div style="margin-top: 20px;">
-                <a class="btn" style="margin-top: 0;" href="template_2026.docx" download>📥 Скачать шаблон тезисов (.docx)</a>
-                <a class="btn" style="margin-top: 0;" href="template_application_2026.docx" download>📥 Скачать шаблон заявки (.docx)</a>
+            
+            <div class="download-grid">
+                <a href="template_2026.docx" download class="file-card">
+                    <div class="file-badge">DOCX</div>
+                    <div class="file-info">
+                        <strong>Шаблон оформления тезисов</strong>
+                        <span>Требования и образец статьи (.docx)</span>
+                    </div>
+                    <svg class="file-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+
+                <a href="template_application_2026.docx" download class="file-card">
+                    <div class="file-badge">DOCX</div>
+                    <div class="file-info">
+                        <strong>Регистрационная форма (заявка)</strong>
+                        <span>Бланк сведений об авторах (.docx)</span>
+                    </div>
+                    <svg class="file-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Комитеты -->
     <section id="committee" style="margin-bottom: 50px;">
-        <h2>👥 Организационный и программный комитеты</h2>
+        <h2>Организационный и программный комитеты</h2>
         <div class="card">
             <div class="committee-list">
                 <p><strong>Председатель оргкомитета:</strong> проф., д.ф.н. Сыров И. А. (СФ УУНиТ, Стерлитамак)</p>
@@ -860,160 +663,59 @@
         </div>
     </section>
 
-    <!-- Регистрация -->
     <section id="registration" style="margin-bottom: 50px;">
-        <h2>📨 Регистрация и подача материалов</h2>
-        <div class="card" style="text-align: center; padding: 35px 20px;">
-            <p style="font-size: 1.1rem;">Отправьте заявку и материалы напрямую на электронную почту оргкомитета:</p>
-            <p style="margin-top: 15px; margin-bottom: 12px;">
-                <a style="color: var(--accent); font-weight: bold; font-size: 1.35rem; text-decoration: none;" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a>
-            </p>
-            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
-                <button type="button" onclick="navigator.clipboard.writeText('phcs-struust@mail.ru'); this.innerText='✓ Скопировано!'; setTimeout(()=>this.innerText='📋 Скопировать email', 2000);" 
-                        style="background: var(--card-bg); border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; color: var(--primary); font-weight: 500; transition: all 0.2s;">
-                    📋 Скопировать email
-                </button>
-                <button type="button" onclick="navigator.share ? navigator.share({title: 'Конференция ФКС-2026', url: window.location.href}) : navigator.clipboard.writeText(window.location.href); alert('Ссылка на сайт скопирована!');" 
-                        style="background: var(--card-bg); border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; color: var(--text-muted); transition: all 0.2s;">
-                    🔗 Поделиться сайтом
-                </button>
+        <h2>Регистрация и подача материалов</h2>
+        <div class="card" style="text-align: center; padding: 40px 20px;">
+            <p style="margin-top: 10px; font-size: 1.1rem;">Отправьте заявку и материалы напрямую на электронную почту оргкомитета:</p>
+            
+            <div class="email-wrapper">
+                <a class="email-link" href="mailto:phcs-struust@mail.ru?subject=Конференция%20«ФКС-2026»">phcs-struust@mail.ru</a>
+                <div class="email-actions">
+                    <button type="button" class="btn-icon" onclick="copyEmail()" title="Скопировать адрес почты" aria-label="Скопировать e-mail">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon" onclick="shareConference()" title="Поделиться ссылкой на сайт" aria-label="Поделиться">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Часто задаваемые вопросы -->
-    <section id="faq" style="margin-bottom: 50px;">
-        <h2>❓ Часто задаваемые вопросы</h2>
-        <div class="card">
-            <details class="faq-item">
-                <summary>Выдаются ли официальные сертификаты участников?</summary>
-                <p>Да, всем очным и дистанционным докладчикам выдаются именные сертификаты участников международной конференции.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Где будет опубликован и проиндексирован сборник?</summary>
-                <p>Сборник трудов конференции будет издан в электронном виде и полностью проиндексирован в базе РИНЦ. Лучшие статьи будут рекомендованы к публикации в журналах ВАК.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Когда появится ссылка на трансляцию в Яндекс Телемост?</summary>
-                <p>Прямая ссылка для подключения к трансляции будет размещена прямо в кнопке в шапке сайта и разослана на почту зарегистрированным авторам 23 сентября.</p>
-            </details>
-        </div>
-    </section>
-
-    <!-- Контакты и интерактивная карта -->
     <section id="contacts">
-        <h2>📍 Контакты и место проведения</h2>
-        <div class="card">
-            <p><strong>Адрес кафедры:</strong> <a href="https://yandex.ru/maps/?text=Стерлитамак+проспект+Ленина+37" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 500;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37, СФ УУНиТ</a></p>
-            <p style="margin-top: 6px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики (ЕНФ)</p>
-            <p style="margin-top: 6px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary);">phcs-struust@mail.ru</a></p>
-            <p style="margin-top: 6px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary);">+7 (3473) 33-98-65</a> (доб. 316)</p>
-            <p style="margin-top: 6px;"><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary);">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
-
-            <!-- Интерактивная карта Яндекс -->
-            <div style="margin-top: 20px;">
-                <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D1%82%D0%B5%D1%80%D0%BB%D0%B8%D1%82%D0%B0%D0%BC%D0%B0%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9B%D0%B5%D0%BD%D0%B8%D0%BD%D0%B0%2C%2037&z=16" frameborder="0" allowfullscreen="true"></iframe>
+        <h2>Контакты и место проведения</h2>
+        <div class="contacts-grid">
+            <div class="card">
+                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
+                <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
+                <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
+                <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
+                <p style="margin-bottom: 0;"><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+            </div>
+            
+            <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; min-height: 380px;">
+                <iframe 
+                    src="https://yandex.ru/map-widget/v1/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    style="border: none; width: 100%; height: 100%; min-height: 380px; flex-grow: 1; display: block;"
+                    title="УУНиТ, факультет математики и информационных технологий (пр. Ленина, 37)">
+                </iframe>
             </div>
         </div>
     </section>
 </div>
 
-<!-- Плавающая кнопка возврата Наверх -->
-<button id="back-to-top" title="Наверх">↑</button>
-
 <footer>
-    <p><a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.95rem;">↑ Наверх к началу страницы</a></p>
-    <p style="margin-top: 10px;">&copy; 2026 Кафедра общей и теоретической физики СФ УУНиТ. Все права защищены.</p>
-</footer>
-
-<!-- Скрипты интерактива -->
-<script>
-    // 1. Полоса прогресса скролла
-    window.addEventListener('scroll', () => {
-        const winScroll = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById('progress-bar').style.width = scrolled + '%';
-
-        // Кнопка Наверх
-        const btt = document.getElementById('back-to-top');
-        if (winScroll > 300) {
-            btt.classList.add('show');
-        } else {
-            btt.classList.remove('show');
-        }
-    });
-
-    document.getElementById('back-to-top').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // 2. Таймер дедлайна (14 сентября 2026, 23:59:59)
-    const deadline = new Date(2026, 8, 14, 23, 59, 59).getTime(); // месяц 8 = сентябрь в JS
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const diff = deadline - now;
-        if (diff > 0) {
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('cd-days').innerText = String(d).padStart(2, '0');
-            document.getElementById('cd-hours').innerText = String(h).padStart(2, '0');
-            document.getElementById('cd-minutes').innerText = String(m).padStart(2, '0');
-            document.getElementById('cd-seconds').innerText = String(s).padStart(2, '0');
-        } else {
-            document.getElementById('cd-days').innerText = '00';
-            document.getElementById('cd-hours').innerText = '00';
-            document.getElementById('cd-minutes').innerText = '00';
-            document.getElementById('cd-seconds').innerText = '00';
-        }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // 3. Калькулятор оргвзноса
-    function calcTotal() {
-        const formatPrice = parseInt(document.getElementById('calc-format').value) || 0;
-        const count = parseInt(document.getElementById('calc-count').value) || 1;
-        const total = formatPrice * count;
-        document.getElementById('calc-total').innerText = total.toLocaleString('ru-RU') + ' ₽';
-    }
-
-    // 4. Живой поиск по научным секциям
-    document.getElementById('section-search').addEventListener('input', function(e) {
-        const query = e.target.value.toLowerCase().trim();
-        const cards = document.querySelectorAll('.section-card');
-        let visibleCount = 0;
-        cards.forEach(card => {
-            const text = card.innerText.toLowerCase();
-            if (text.includes(query)) {
-                card.style.display = 'block';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-        document.getElementById('no-sections-msg').style.display = visibleCount === 0 ? 'block' : 'none';
-    });
-
-    // 5. Переключатель Тёмной/Светлой темы
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    
-    // Проверяем сохранённую тему
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme');
-        themeIcon.innerText = '☀️';
-    }
-
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        const isDark = document.body.classList.contains('dark-theme');
-        themeIcon.innerText = isDark ? '☀️' : '🌙';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-</script>
-
-</body>
-</html>
+    <p><a href="#"
