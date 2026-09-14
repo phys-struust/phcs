@@ -6,7 +6,7 @@
     <title>ФКС-2026: Физика конденсированного состояния</title>
     <meta name="description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения» (ФКС-2026), 24–26 сентября 2026 г., СФ УУНиТ.">
 
-    <!-- Open Graph для предпросмотра в Telegram / VK -->
+    <!-- Open Graph для красивого предпросмотра при шеринге в Telegram / VK -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Конференция ФКС-2026 (24–26 сентября)">
     <meta property="og:description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения». Прием заявок до 14 сентября 2026 г.">
@@ -70,11 +70,12 @@
             padding: 30px 20px 55px;
         }
 
+        /* Убираем внутренний паддинг контейнера в шапке */
         header .container {
             padding: 0;
         }
 
-        /* Верхняя плашка брендинга (вуз слева, кафедра справа) */
+        /* Верхняя брендинговая строка */
         .header-branding {
             display: flex;
             align-items: center;
@@ -143,7 +144,7 @@
             text-align: right;
         }
 
-        /* Центральный блок шапки (название конференции и кнопки) */
+        /* Центральный блок шапки */
         .header-hero {
             text-align: center;
             max-width: 960px;
@@ -228,7 +229,7 @@
             font-size: 1.2rem;
         }
 
-        /* Исчезающая полоска на секциях */
+        /* Исчезающая синяя полоска на карточках секций */
         #sections .card {
             border-left: 4px solid transparent;
             transition: transform 0.3s, box-shadow 0.3s, border-left-color 0.3s;
@@ -238,7 +239,7 @@
             border-left-color: var(--primary);
         }
 
-        /* Кнопки */
+        /* Базовые стили кнопок */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -308,7 +309,7 @@
             border-color: #f57c00;
         }
 
-        /* Блок почты и иконки действий */
+        /* Центрированный блок почты со значками */
         .email-wrapper {
             position: relative;
             display: inline-block;
@@ -350,6 +351,7 @@
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            vertical-align: middle;
         }
 
         .btn-icon:hover {
@@ -388,7 +390,7 @@
             transform: translateY(0);
         }
 
-        /* Бейджи дат и списки */
+        /* Значки дат и списки */
         .date-badge {
             background-color: #e9ecef;
             color: var(--primary);
@@ -461,6 +463,79 @@
             display: block;
         }
 
+        /* Виджет QR-кода сайта */
+        .qr-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 20px;
+        }
+
+        .qr-image {
+            background: white;
+            padding: 4px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            flex-shrink: 0;
+        }
+
+        .qr-text {
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+
+        .qr-text strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .qr-text p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* Плавающая кнопка Наверх */
+        .btn-scroll-top {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 90;
+        }
+
+        .btn-scroll-top.visible {
+            opacity: 0.9;
+            visibility: visible;
+        }
+
+        .btn-scroll-top:hover {
+            opacity: 1;
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Подвал */
         footer {
             background: #2c3e50;
             color: #ecf0f1;
@@ -469,7 +544,7 @@
             margin-top: 40px;
         }
 
-        /* Адаптивность для мобильных устройств */
+        /* Адаптивность для мобильных */
         @media (max-width: 900px) {
             .contacts-grid {
                 grid-template-columns: 1fr;
@@ -480,6 +555,7 @@
             header {
                 padding: 24px 16px 45px;
             }
+
             .header-branding {
                 flex-direction: column;
                 align-items: center;
@@ -488,12 +564,15 @@
                 padding-bottom: 18px;
                 margin-bottom: 22px;
             }
+
             .brand-block {
                 justify-content: center;
             }
+
             .brand-text, .text-right {
                 text-align: center;
             }
+
             .brand-icon {
                 height: 42px;
             }
@@ -543,11 +622,77 @@
                 margin-top: 10px;
             }
         }
+
+        /* Стили для чистой печати (Ctrl + P) */
+        @media print {
+            nav, 
+            .email-actions, 
+            .btn, 
+            .share-toast, 
+            .btn-icon,
+            #backToTop,
+            .map-frame,
+            .qr-box,
+            iframe {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+
+            header {
+                background: none !important;
+                color: black !important;
+                padding: 0 0 15px 0 !important;
+                border-bottom: 2pt solid #000;
+                text-align: left !important;
+            }
+
+            .brand-icon {
+                filter: none !important;
+            }
+
+            .brand-univ, .brand-sub, .brand-branch, .header-hero h1, .hero-meta {
+                color: black !important;
+            }
+
+            header h1 {
+                font-size: 16pt !important;
+                margin: 10px 0 !important;
+            }
+
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                padding: 12px !important;
+                page-break-inside: avoid;
+            }
+
+            section {
+                margin-bottom: 20px !important;
+            }
+
+            h2 {
+                color: black !important;
+                border-bottom: 1pt solid #000 !important;
+                font-size: 14pt !important;
+                margin-bottom: 10px !important;
+            }
+
+            .email-link {
+                color: black !important;
+                font-size: 12pt !important;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!-- Скрытый блок SVG-символов (DRY) -->
+<!-- Скрытый блок переиспользуемых SVG-символов (DRY) -->
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-word" viewBox="0 0 24 24">
         <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff"/>
@@ -559,11 +704,10 @@
 
 <header>
     <div class="container">
-        <!-- Верхняя брендинговая строка -->
+        <!-- Верхняя брендинговая строка: слева СФ УУНиТ со знаком znak.svg, справа Кафедра без знака -->
         <div class="header-branding">
-            <!-- Слева: СФ УУНиТ со знаком -->
             <a href="https://str.uust.ru" target="_blank" rel="noopener noreferrer" class="brand-block brand-left" title="Стерлитамакский филиал УУНиТ">
-                <img src="favicon-white.png" onerror="this.onerror=null; this.src='znak.svg';" alt="Знак УУНиТ" class="brand-icon">
+                <img src="znak.svg" alt="Знак УУНиТ" class="brand-icon">
                 <div class="brand-text">
                     <span class="brand-univ">УФИМСКИЙ УНИВЕРСИТЕТ</span>
                     <span class="brand-sub">НАУКИ И ТЕХНОЛОГИЙ</span>
@@ -571,7 +715,6 @@
                 </div>
             </a>
 
-            <!-- Справа: Кафедра и факультет в таком же стиле без значка -->
             <a href="#contacts" class="brand-block brand-right" title="Кафедра общей и теоретической физики">
                 <div class="brand-text text-right">
                     <span class="brand-univ">ЕСТЕСТВЕННОНАУЧНЫЙ ФАКУЛЬТЕТ</span>
@@ -776,6 +919,20 @@
                 <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
                 <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
                 <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+
+                <!-- Виджет QR-кода -->
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://phys-struust.github.io/phcs/&color=004488" 
+                         alt="QR-код сайта ФКС-2026" 
+                         class="qr-image" 
+                         width="100" 
+                         height="100"
+                         loading="lazy">
+                    <div class="qr-text">
+                        <strong>Мобильная версия сайта</strong>
+                        <p>Отсканируйте камерой смартфона, чтобы открыть сайт или поделиться с коллегами.</p>
+                    </div>
+                </div>
             </div>
             
             <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; min-height: 380px;">
@@ -790,6 +947,9 @@
         </div>
     </section>
 </div>
+
+<!-- Плавающая кнопка возврата наверх -->
+<button type="button" id="backToTop" class="btn-scroll-top" title="Наверх" aria-label="Вернуться наверх">↑</button>
 
 <footer>
     <p><a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.95rem;">↑ Наверх к началу страницы</a></p>
@@ -840,6 +1000,19 @@ function copyLink() {
         alert('Ссылка: ' + window.location.href);
     });
 }
+
+// Логика кнопки "Наверх"
+const btnTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 350) {
+        btnTop.classList.add('visible');
+    } else {
+        btnTop.classList.remove('visible');
+    }
+});
+btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 
 </body>
