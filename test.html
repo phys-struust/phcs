@@ -70,7 +70,6 @@
             padding: 30px 20px 55px;
         }
 
-        /* Убираем внутренний паддинг контейнера в шапке */
         header .container {
             padding: 0;
         }
@@ -116,7 +115,9 @@
             line-height: 1.18;
         }
 
+        /* Название вуза строгим гротеском */
         .brand-univ {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
             font-size: 0.88rem;
             font-weight: 800;
             letter-spacing: 0.8px;
@@ -125,6 +126,7 @@
         }
 
         .brand-sub {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.6px;
@@ -133,11 +135,15 @@
             margin-top: 2px;
         }
 
+        /* Филиал другим шрифтом (с засечками, курсив) */
         .brand-branch {
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 0.92rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.88);
             margin-top: 3px;
+            letter-spacing: 0.3px;
         }
 
         .text-right {
@@ -704,7 +710,7 @@
 
 <header>
     <div class="container">
-        <!-- Верхняя брендинговая строка: слева СФ УУНиТ со знаком znak.svg, справа Кафедра без знака -->
+        <!-- Верхняя брендинговая строка: слева ВУЗ + филиал другим шрифтом, справа только кафедра физики -->
         <div class="header-branding">
             <a href="https://str.uust.ru" target="_blank" rel="noopener noreferrer" class="brand-block brand-left" title="Стерлитамакский филиал УУНиТ">
                 <img src="znak.svg" alt="Знак УУНиТ" class="brand-icon">
@@ -717,9 +723,8 @@
 
             <a href="#contacts" class="brand-block brand-right" title="Кафедра общей и теоретической физики">
                 <div class="brand-text text-right">
-                    <span class="brand-univ">ЕСТЕСТВЕННОНАУЧНЫЙ ФАКУЛЬТЕТ</span>
-                    <span class="brand-sub">КАФЕДРА ОБЩЕЙ И ТЕОРЕТИЧЕСКОЙ ФИЗИКИ</span>
-                    <span class="brand-branch">СФ УУНиТ</span>
+                    <span class="brand-univ">КАФЕДРА ОБЩЕЙ И ТЕОРЕТИЧЕСКОЙ ФИЗИКИ</span>
+                    <span class="brand-sub">Естественнонаучный факультет</span>
                 </div>
             </a>
         </div>
@@ -914,7 +919,7 @@
         <h2>Контакты и место проведения</h2>
         <div class="contacts-grid">
             <div class="card">
-                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
+                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/11116/sterlitamak/house/prospekt_lenina_37/YUwYfwNhQUEPQFtpfXp1c3hhZA==/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
                 <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
                 <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
                 <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
@@ -936,12 +941,13 @@
             </div>
             
             <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; min-height: 380px;">
+                <!-- Чистая интерактивная карта с меткой на здании без всплывающей плашки организации -->
                 <iframe 
                     class="map-frame"
-                    src="https://yandex.ru/map-widget/v1/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" 
+                    src="https://yandex.ru/map-widget/v1/?ll=55.941848%2C53.642420&z=17&pt=55.941848%2C53.642420,pm2blm" 
                     loading="lazy"
                     allowfullscreen="true" 
-                    title="УУНиТ, факультет математики и информационных технологий (пр. Ленина, 37)">
+                    title="Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ)">
                 </iframe>
             </div>
         </div>
