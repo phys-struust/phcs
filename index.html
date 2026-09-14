@@ -6,10 +6,10 @@
     <title>ФКС-2026: Физика конденсированного состояния</title>
     <meta name="description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения» (ФКС-2026), 24–26 сентября 2026 г., СФ УУНиТ.">
 
-    <!-- Open Graph для красивого предпросмотра при шеринге в Telegram / VK -->
+    <!-- Open Graph для предпросмотра при шеринге в Telegram / VK -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Конференция ФКС-2026 (24–26 сентября)">
-    <meta property="og:description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения». Прием заявок до 14 сентября 2026 г.">
+    <meta property="og:description" content="VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения». Прием материалов продлен до 20 сентября 2026 г.">
 
     <!-- Фавиконки под светлую и тёмную темы -->
     <link rel="icon" href="favicon-purple.png" media="(prefers-color-scheme: light)">
@@ -67,33 +67,106 @@
         header {
             background: linear-gradient(135deg, var(--primary) 0%, #0066cc 100%);
             color: white;
-            text-align: center;
-            padding: 60px 20px;
+            padding: 30px 20px 55px;
         }
 
-        /* Убираем внутренний паддинг контейнера в шапке, чтобы не смещать текст вниз */
         header .container {
             padding: 0;
         }
 
-        .header-tagline {
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            opacity: 0.8;
+        /* Верхняя брендинговая строка */
+        .header-branding {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            padding-bottom: 22px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
         }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin: 20px 0;
-            line-height: 1.3;
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .brand-block:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .brand-icon {
+            height: 48px;
+            width: auto;
+            max-width: 55px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.18;
+        }
+
+        /* Название вуза строгим гротеском */
+        .brand-univ {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .brand-sub {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.92);
+            margin-top: 2px;
+        }
+
+        /* Филиал другим шрифтом, прямой (НЕ курсив) */
+        .brand-branch {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: normal;
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 3px;
+            letter-spacing: 0.2px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        /* Центральный блок шапки */
+        .header-hero {
+            text-align: center;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .header-hero h1 {
+            font-size: 2.15rem;
+            margin-bottom: 18px;
+            line-height: 1.32;
         }
 
         .hero-meta {
             font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            margin-bottom: 28px;
+            opacity: 0.92;
         }
 
         /* Навигация */
@@ -187,7 +260,7 @@
             font-weight: bold;
             transition: background 0.3s, transform 0.2s, border-color 0.3s;
             border: 2px solid var(--accent);
-            margin: 5px 5px 5px 0;
+            margin: 5px;
             font-family: inherit;
             font-size: 1rem;
             cursor: pointer;
@@ -396,6 +469,78 @@
             display: block;
         }
 
+        /* Виджет QR-кода сайта */
+        .qr-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 20px;
+        }
+
+        .qr-image {
+            background: white;
+            padding: 4px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            flex-shrink: 0;
+        }
+
+        .qr-text {
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+
+        .qr-text strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .qr-text p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* Плавающая кнопка Наверх */
+        .btn-scroll-top {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 90;
+        }
+
+        .btn-scroll-top.visible {
+            opacity: 0.9;
+            visibility: visible;
+        }
+
+        .btn-scroll-top:hover {
+            opacity: 1;
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
         /* Подвал */
         footer {
             background: #2c3e50;
@@ -413,7 +558,35 @@
         }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 1.6rem; }
+            header {
+                padding: 24px 16px 45px;
+            }
+
+            .header-branding {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding-bottom: 18px;
+                margin-bottom: 22px;
+            }
+
+            .brand-block {
+                justify-content: center;
+            }
+
+            .brand-text, .text-right {
+                text-align: center;
+            }
+
+            .brand-icon {
+                height: 42px;
+            }
+
+            .header-hero h1 { 
+                font-size: 1.55rem; 
+            }
+
             nav {
                 padding: 10px 12px;
                 overflow-x: auto;
@@ -434,7 +607,7 @@
             }
             .btn { 
                 display: flex; 
-                margin: 10px auto; 
+                margin: 8px auto; 
                 width: 100%; 
                 max-width: 320px; 
                 padding: 12px 16px;
@@ -455,11 +628,77 @@
                 margin-top: 10px;
             }
         }
+
+        /* Стили для чистой печати (Ctrl + P) */
+        @media print {
+            nav, 
+            .email-actions, 
+            .btn, 
+            .share-toast, 
+            .btn-icon,
+            #backToTop,
+            .map-frame,
+            .qr-box,
+            iframe {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+
+            header {
+                background: none !important;
+                color: black !important;
+                padding: 0 0 15px 0 !important;
+                border-bottom: 2pt solid #000;
+                text-align: left !important;
+            }
+
+            .brand-icon {
+                filter: none !important;
+            }
+
+            .brand-univ, .brand-sub, .brand-branch, .header-hero h1, .hero-meta {
+                color: black !important;
+            }
+
+            header h1 {
+                font-size: 16pt !important;
+                margin: 10px 0 !important;
+            }
+
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                padding: 12px !important;
+                page-break-inside: avoid;
+            }
+
+            section {
+                margin-bottom: 20px !important;
+            }
+
+            h2 {
+                color: black !important;
+                border-bottom: 1pt solid #000 !important;
+                font-size: 14pt !important;
+                margin-bottom: 10px !important;
+            }
+
+            .email-link {
+                color: black !important;
+                font-size: 12pt !important;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!-- Скрытый блок переиспользуемых SVG-символов (DRY) -->
+<!-- Скрытый блок переиспользуемых SVG-символов -->
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-word" viewBox="0 0 24 24">
         <path d="M7 2H17L21 6V20C21 21.1 20.1 22 19 22H7C5.9 22 5 21.1 5 20V4C5 2.9 5.9 2 7 2Z" fill="#ffffff"/>
@@ -471,14 +710,36 @@
 
 <header>
     <div class="container">
-        <p class="header-tagline">Стерлитамакский филиал УУНиТ &bull; Естественнонаучный факультет</p>
-        <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
-        <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37</p>
-        <div>
-            <a class="btn" href="#registration">Подать заявку</a> 
-            <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
-            <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
-            <a class="btn btn-secondary" href="#" onclick="return false;" style="cursor: default;" title="Ссылка на подключение будет опубликована ближе к началу конференции">Яндекс Телемост (появится позднее)</a>
+        <!-- Верхняя брендинговая строка -->
+        <div class="header-branding">
+            <a href="https://str.uust.ru" target="_blank" rel="noopener noreferrer" class="brand-block brand-left" title="Стерлитамакский филиал УУНиТ">
+                <img src="znak.svg" alt="Знак УУНиТ" class="brand-icon">
+                <div class="brand-text">
+                    <span class="brand-univ">УФИМСКИЙ УНИВЕРСИТЕТ</span>
+                    <span class="brand-sub">НАУКИ И ТЕХНОЛОГИЙ</span>
+                    <span class="brand-branch">Стерлитамакский филиал</span>
+                </div>
+            </a>
+
+            <!-- Ссылка на кафедру физики https://str.uust.ru/kafedra/5 -->
+            <a href="https://str.uust.ru/kafedra/5" target="_blank" rel="noopener noreferrer" class="brand-block brand-right" title="Кафедра общей и теоретической физики СФ УУНиТ">
+                <div class="brand-text text-right">
+                    <span class="brand-univ">КАФЕДРА ОБЩЕЙ И ТЕОРЕТИЧЕСКОЙ ФИЗИКИ</span>
+                    <span class="brand-sub">Естественнонаучный факультет</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Центральный блок конференции -->
+        <div class="header-hero">
+            <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
+            <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37</p>
+            <div>
+                <a class="btn" href="#registration">Подать заявку</a> 
+                <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
+                <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
+                <a class="btn btn-secondary" href="#" onclick="return false;" style="cursor: default;" title="Ссылка на подключение будет опубликована ближе к началу конференции">Яндекс Телемост (появится позднее)</a>
+            </div>
         </div>
     </div>
 </header>
@@ -510,14 +771,14 @@
         <h2>Ключевые даты</h2>
         <div class="grid">
             <div class="card">
-                <span class="date-badge date-badge-urgent">до 14 сентября 2026 г.</span>
+                <span class="date-badge date-badge-urgent">до 20 сентября 2026 г.</span>
                 <h3>Приём заявок</h3>
-                <p>Окончание приёма регистрационных форм участников конференции.</p>
+                <p>Окончание приёма регистрационных форм участников конференции (продлено).</p>
             </div>
             <div class="card">
-                <span class="date-badge date-badge-urgent">до 14 сентября 2026 г.</span>
+                <span class="date-badge date-badge-urgent">до 20 сентября 2026 г.</span>
                 <h3>Приём тезисов</h3>
-                <p>Приём текстов докладов и статей в формате docx для публикации в сборнике.</p>
+                <p>Приём текстов докладов и статей в формате docx для публикации в сборнике (продлено).</p>
             </div>
             <div class="card">
                 <span class="date-badge">24&ndash;26 сентября 2026 г.</span>
@@ -580,7 +841,7 @@
             </div>
 
             <div style="margin-top: 10px;">
-                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener noreferrer">Договор публичной оферты (PDF)</a>
+                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%BHard_public_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener noreferrer">Договор публичной оферты (PDF)</a>
                 <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener noreferrer">Квитанция на оплату оргвзноса (PDF)</a>
             </div>
         </div>
@@ -659,17 +920,32 @@
         <h2>Контакты и место проведения</h2>
         <div class="contacts-grid">
             <div class="card">
-                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
-                <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> Кафедра общей и теоретической физики</p>
+                <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/?from=mapframe&ll=55.941847%2C53.642421&z=17" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
+                <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> <a href="https://str.uust.ru/kafedra/5" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 500;">Кафедра общей и теоретической физики</a></p>
                 <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
                 <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
                 <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
+
+                <!-- Виджет QR-кода -->
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://phys-struust.github.io/phcs/&color=004488" 
+                         alt="QR-код сайта ФКС-2026" 
+                         class="qr-image" 
+                         width="100" 
+                         height="100"
+                         loading="lazy">
+                    <div class="qr-text">
+                        <strong>Мобильная версия сайта</strong>
+                        <p>Отсканируйте камерой смартфона, чтобы открыть сайт или поделиться с коллегами.</p>
+                    </div>
+                </div>
             </div>
             
             <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; min-height: 380px;">
+                <!-- Интерактивный виджет Яндекс Карт с фокусом и масштабом z=17 -->
                 <iframe 
                     class="map-frame"
-                    src="https://yandex.ru/map-widget/v1/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/" 
+                    src="https://yandex.ru/map-widget/v1/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/?from=mapframe&ll=55.941847%2C53.642421&z=17" 
                     loading="lazy"
                     allowfullscreen="true" 
                     title="УУНиТ, факультет математики и информационных технологий (пр. Ленина, 37)">
@@ -678,6 +954,9 @@
         </div>
     </section>
 </div>
+
+<!-- Плавающая кнопка возврата наверх -->
+<button type="button" id="backToTop" class="btn-scroll-top" title="Наверх" aria-label="Вернуться наверх">↑</button>
 
 <footer>
     <p><a href="#" style="color: #94a3b8; text-decoration: none; font-size: 0.95rem;">↑ Наверх к началу страницы</a></p>
@@ -728,6 +1007,19 @@ function copyLink() {
         alert('Ссылка: ' + window.location.href);
     });
 }
+
+// Логика кнопки "Наверх"
+const btnTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 350) {
+        btnTop.classList.add('visible');
+    } else {
+        btnTop.classList.remove('visible');
+    }
+});
+btnTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 
 </body>
