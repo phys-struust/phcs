@@ -310,7 +310,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            transition: background 0.3s, transform 0.2s, border-color 0.3s;
+            transition: background 0.3s, transform 0.2s, border-color 0.3s, color 0.3s;
             border: 2px solid var(--accent);
             margin: 5px;
             font-family: inherit;
@@ -790,9 +790,18 @@
                 <a class="btn" href="#registration">Подать заявку</a> 
                 <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
                 <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
-                <!-- Рабочая ссылка на подключение к Телемосту -->
-                <a class="btn btn-secondary" href="https://telemost.yandex.ru/j/02146104736104" target="_blank" rel="noopener noreferrer" title="Подключиться к конференции в Яндекс Телемост">Яндекс Телемост</a>
+                <!-- Кнопка Яндекс Телемоста в классическом стиле со значком видеокамеры -->
+                <a class="btn btn-secondary" href="https://telemost.yandex.ru/j/02146104736104" target="_blank" rel="noopener noreferrer" title="Подключиться к онлайн-заседаниям в Яндекс Телемост">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                    </svg>
+                    <span>Подключиться к конференции по Телемосту</span>
+                </a>
             </div>
+            <!-- Номер встречи под кнопками -->
+            <p style="font-size: 0.88rem; margin-top: 14px; opacity: 0.92;">
+                Номер встречи в Телемосте: <strong style="letter-spacing: 0.5px;">0214 6104 7361 04</strong>
+            </p>
         </div>
     </div>
 </header>
@@ -821,7 +830,7 @@
         </div>
     </section>
 
-    <!-- БЛОК 1: Порядок участия (3 простых шага) -->
+    <!-- БЛОК: Порядок участия (3 простых шага) -->
     <section id="steps">
         <h2>Порядок участия</h2>
         <div class="steps-grid">
@@ -1004,6 +1013,7 @@
             <div class="card">
                 <p style="margin-bottom: 12px;"><strong>Адрес:</strong> <a href="https://yandex.ru/maps/org/uunit_fakultet_matematiki_i_informatsionnykh_tekhnologiy/142961310301/?from=mapframe&ll=55.941847%2C53.642421&z=17" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">453103, Россия, Республика Башкортостан, г. Стерлитамак, пр. Ленина, д. 37 (СФ УУНиТ, корпус ФМиИТ)</a></p>
                 <p style="margin-bottom: 12px;"><strong>Кафедра:</strong> <a href="https://str.uust.ru/kafedra/5" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 500;">Кафедра общей и теоретической физики</a></p>
+                <p style="margin-bottom: 12px;"><strong>Онлайн-подключение:</strong> <a href="https://telemost.yandex.ru/j/02146104736104" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none; font-weight: 500;">Яндекс Телемост</a> (номер встречи: <strong>0214 6104 7361 04</strong>)</p>
                 <p style="margin-bottom: 12px;"><strong>E-mail оргкомитета:</strong> <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); text-decoration: none; font-weight: 500;">phcs-struust@mail.ru</a></p>
                 <p style="margin-bottom: 12px;"><strong>Телефон кафедры:</strong> <a href="tel:+73473339865" style="color: var(--primary); text-decoration: none;">+7 (3473) 33-98-65</a> (доб. 316)</p>
                 <p><strong>Отв. секретарь:</strong> <a href="tel:+79273146503" style="color: var(--primary); text-decoration: none;">+7 (927) 314-65-03</a> (Зеленова Марина Анатольевна)</p>
