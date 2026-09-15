@@ -235,6 +235,58 @@
             font-size: 1.2rem;
         }
 
+        /* Блок "Порядок участия" */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 22px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .step-num {
+            background: linear-gradient(135deg, var(--primary) 0%, #0066cc 100%);
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 3px 8px rgba(0,68,136,0.25);
+        }
+
+        .step-content h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            font-size: 0.92rem;
+            color: var(--text);
+            line-height: 1.45;
+            margin: 0;
+        }
+
         /* Исчезающая синяя полоска на карточках секций */
         #sections .card {
             border-left: 4px solid transparent;
@@ -738,7 +790,8 @@
                 <a class="btn" href="#registration">Подать заявку</a> 
                 <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
                 <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
-                <a class="btn btn-secondary" href="#" onclick="return false;" style="cursor: default;" title="Ссылка на подключение будет опубликована ближе к началу конференции">Яндекс Телемост (появится позднее)</a>
+                <!-- Рабочая ссылка на подключение к Телемосту -->
+                <a class="btn btn-secondary" href="https://telemost.yandex.ru/j/02146104736104" target="_blank" rel="noopener noreferrer" title="Подключиться к конференции в Яндекс Телемост">Яндекс Телемост</a>
             </div>
         </div>
     </div>
@@ -748,6 +801,7 @@
 
 <nav>
     <a href="#about">О конференции</a> 
+    <a href="#steps">Порядок участия</a>
     <a href="#dates">Ключевые даты</a> 
     <a href="#sections">Секции</a> 
     <a href="#publication">Условия и взносы</a> 
@@ -764,6 +818,34 @@
             <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
             <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
             <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
+        </div>
+    </section>
+
+    <!-- БЛОК 1: Порядок участия (3 простых шага) -->
+    <section id="steps">
+        <h2>Порядок участия</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3>Подготовка материалов</h3>
+                    <p>Скачайте <a href="#rules" style="color: var(--primary); font-weight: 500;">шаблоны тезисов и заявки</a>. Оформите статью объемом до 5 страниц в MS Word по установленным правилам.</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3>Подача заявки (до 20 сент.)</h3>
+                    <p>Отправьте статью и заявку на <a href="mailto:phcs-struust@mail.ru" style="color: var(--primary); font-weight: 500;">phcs-struust@mail.ru</a>. Оргкомитет проверит материалы и подтвердит приём.</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h3>Оплата оргвзноса</h3>
+                    <p>Только <strong>после подтверждения</strong> приёма статьи оплатите оргвзнос по <a href="#publication" style="color: var(--primary); font-weight: 500;">квитанции</a> и направьте чек оргкомитету.</p>
+                </div>
+            </div>
         </div>
     </section>
 
