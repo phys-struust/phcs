@@ -185,13 +185,21 @@
             text-decoration: none;
             margin: 0 12px;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.25s, border-bottom-color 0.25s;
             display: inline-block;
             padding: 5px 0;
+            border-bottom: 2px solid transparent;
         }
 
         nav a:hover {
             color: var(--accent);
+        }
+
+        /* Активный пункт меню при скролле (десктоп) */
+        nav a.active {
+            color: var(--accent);
+            font-weight: 700;
+            border-bottom-color: var(--accent);
         }
 
         /* Контейнер */
@@ -656,7 +664,18 @@
                 background-color: #f1f5f9;
                 border-radius: 20px;
                 font-size: 0.85rem;
+                border-bottom: none;
+                transition: background-color 0.25s, color 0.25s;
             }
+
+            /* Активная кнопка-капсула на смартфонах */
+            nav a.active {
+                background-color: var(--primary);
+                color: #ffffff;
+                font-weight: 700;
+                border-bottom: none;
+            }
+
             .btn { 
                 display: flex; 
                 margin: 8px auto; 
@@ -790,7 +809,7 @@
                 <a class="btn" href="#registration">Подать заявку</a> 
                 <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
                 <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
-                <!-- Кнопка Яндекс Телемоста в классическом стиле со значком видеокамеры -->
+                <!-- Кнопка Яндекс Телемоста со значком видеокамеры -->
                 <a class="btn btn-secondary" href="https://telemost.yandex.ru/j/02146104736104" target="_blank" rel="noopener noreferrer" title="Подключиться к онлайн-заседаниям в Яндекс Телемост">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
@@ -830,7 +849,7 @@
         </div>
     </section>
 
-    <!-- БЛОК: Порядок участия (3 простых шага) -->
+    <!-- БЛОК 1: Порядок участия (3 простых шага) -->
     <section id="steps">
         <h2>Порядок участия</h2>
         <div class="steps-grid">
@@ -1112,6 +1131,48 @@ window.addEventListener('scroll', () => {
 btnTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// Логика ScrollSpy (подсветка активного раздела при скролле)
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+const navBar = document.querySelector('nav');
+
+function updateActiveNav() {
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+
+    sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    // Если прокрутили в самый низ страницы — активируем последний пункт
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        current = 'contacts';
+    }
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+            // На смартфонах центрируем активную плашку меню в зоне видимости
+            if (window.innerWidth <= 768 && navBar) {
+                const linkRect = link.getBoundingClientRect();
+                const navRect = navBar.getBoundingClientRect();
+                if (linkRect.left < navRect.left || linkRect.right > navRect.right) {
+                    link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
+            }
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
 </script>
 
 </body>
