@@ -243,6 +243,26 @@
             font-size: 1.2rem;
         }
 
+        /* Карточка "О конференции" с логотипом */
+        .about-card-with-logo {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .about-logo {
+            width: 180px;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+        }
+
+        .about-content {
+            flex-grow: 1;
+        }
+
         /* Блок "Порядок участия" */
         .steps-grid {
             display: grid;
@@ -647,6 +667,17 @@
                 font-size: 1.55rem; 
             }
 
+            /* Адаптивность карточки с логотипом */
+            .about-card-with-logo {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .about-logo {
+                width: 140px;
+            }
+
             nav {
                 padding: 10px 12px;
                 overflow-x: auto;
@@ -821,10 +852,10 @@
             <p style="font-size: 0.88rem; margin-top: 14px; opacity: 0.92;">
                 Номер встречи в Телемосте: <strong style="letter-spacing: 0.5px;">0214 6104 7361 04</strong>
             </p>
-            
-            <!-- Примечание о времени докладов прямо в шапке на первом экране -->
+
+            <!-- Примечание о времени докладов вверху страницы -->
             <div style="margin-top: 18px; background: rgba(0, 0, 0, 0.22); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 8px; padding: 10px 18px; font-size: 0.88rem; max-width: 780px; margin-left: auto; margin-right: auto; line-height: 1.45; text-align: center;">
-                ⏱️ <strong>Регламент секционных заседаний:</strong> время и продолжительность секционного доклада могут быть изменены — точный регламент является гибким и определяется модератором секции непосредственно в ходе заседания в зависимости от количества участников.
+                ⏱️ <strong>Регламент секций:</strong> время и продолжительность секционного доклада могут быть изменены — точный регламент является гибким и определяется модератором секции непосредственно в ходе заседания в зависимости от количества участников.
             </div>
         </div>
     </div>
@@ -855,10 +886,13 @@
 
     <section id="about">
         <h2>О конференции</h2>
-        <div class="card">
-            <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
-            <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
-            <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
+        <div class="card about-card-with-logo">
+            <img src="лого.png" alt="Эмблема конференции ФКС" class="about-logo">
+            <div class="about-content">
+                <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
+                <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
+                <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
+            </div>
         </div>
     </section>
 
@@ -965,7 +999,7 @@
 
             <div style="margin-top: 10px;">
                 <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener noreferrer">Договор публичной оферты (PDF)</a>
-                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-25/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B0.pdf" target="_blank" rel="noopener noreferrer">Квитанция на оплату оргвзноса (PDF)</a>
+                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener noreferrer">Квитанция на оплату оргвзноса (PDF)</a>
             </div>
         </div>
     </section>
