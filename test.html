@@ -165,19 +165,8 @@
 
         .hero-meta {
             font-size: 1.1rem;
-            margin-bottom: 12px;
+            margin-bottom: 28px;
             opacity: 0.92;
-        }
-
-        .hero-formats {
-            font-size: 0.98rem;
-            margin-bottom: 26px;
-            opacity: 0.95;
-            background: rgba(255, 255, 255, 0.12);
-            display: inline-block;
-            padding: 6px 18px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         /* Навигация */
@@ -252,6 +241,26 @@
             color: var(--primary);
             margin-bottom: 12px;
             font-size: 1.2rem;
+        }
+
+        /* Карточка "О конференции" с логотипом */
+        .about-card-with-logo {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .about-logo {
+            width: 180px;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+        }
+
+        .about-content {
+            flex-grow: 1;
         }
 
         /* Блок "Порядок участия" */
@@ -658,9 +667,15 @@
                 font-size: 1.55rem; 
             }
 
-            .hero-formats {
-                font-size: 0.88rem;
-                padding: 6px 12px;
+            /* Адаптивность карточки с логотипом */
+            .about-card-with-logo {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .about-logo {
+                width: 140px;
             }
 
             nav {
@@ -749,11 +764,8 @@
                 filter: none !important;
             }
 
-            .brand-univ, .brand-sub, .brand-branch, .header-hero h1, .hero-meta, .hero-formats {
+            .brand-univ, .brand-sub, .brand-branch, .header-hero h1, .hero-meta {
                 color: black !important;
-                background: none !important;
-                border: none !important;
-                padding: 0 !important;
             }
 
             header h1 {
@@ -824,12 +836,8 @@
         <div class="header-hero">
             <h1>VI Международная научно-практическая конференция<br />&laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</h1>
             <p class="hero-meta">📅 24&ndash;26 сентября 2026 г. &nbsp;|&nbsp; 📍 г. Стерлитамак, пр. Ленина, д. 37</p>
-            <!-- ПУНКТ 4: Форматы участия на первом экране -->
-            <div class="hero-formats">
-                🌐 <strong>Формат участия:</strong> очный, дистанционный (Яндекс Телемост) или заочный (только публикация в сборнике)
-            </div>
             <div>
-                <a class="btn" href="#registration">Подать заявку</a> 
+                <a class="btn" href="program_2026.pdf" target="_blank" rel="noopener noreferrer">Программа конференции</a> 
                 <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
                 <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
                 <!-- Кнопка Яндекс Телемоста со значком видеокамеры -->
@@ -844,6 +852,11 @@
             <p style="font-size: 0.88rem; margin-top: 14px; opacity: 0.92;">
                 Номер встречи в Телемосте: <strong style="letter-spacing: 0.5px;">0214 6104 7361 04</strong>
             </p>
+
+            <!-- Примечание о времени докладов вверху страницы -->
+            <div style="margin-top: 18px; background: rgba(0, 0, 0, 0.22); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 8px; padding: 10px 18px; font-size: 0.88rem; max-width: 780px; margin-left: auto; margin-right: auto; line-height: 1.45; text-align: center;">
+                ⏱️ <strong>Регламент секций:</strong> время и продолжительность секционного доклада могут быть изменены — точный регламент является гибким и определяется модератором секции непосредственно в ходе заседания в зависимости от количества участников.
+            </div>
         </div>
     </div>
 </header>
@@ -863,26 +876,22 @@
 </nav>
 
 <div class="container">
+    <!-- Акцентное предупреждение о регламенте вверху контента -->
+    <div class="notice-box" style="margin-top: 0; margin-bottom: 30px;">
+        <p class="notice-box-title">⏱️ Обратите внимание на регламент секционных докладов:</p>
+        <p style="margin: 0; font-size: 0.92rem; color: var(--text);">
+            Время и продолжительность секционного доклада носят ориентировочный характер и могут быть изменены модератором секции непосредственно в ходе заседания в зависимости от фактического количества участников.
+        </p>
+    </div>
+
     <section id="about">
         <h2>О конференции</h2>
-        <div class="card">
-            <!-- ПУНКТ 6: Приглашение студентов, магистрантов и аспирантов -->
-            <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, молодых учёных, аспирантов, магистрантов и студентов (в том числе в соавторстве с научными руководителями) принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
-            <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
-            <p style="margin-bottom: 15px;"><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн через Яндекс Телемост) и заочного участия.</p>
-
-            <!-- ПУНКТЫ 5, 1 и 2: Статус сборника (ISBN, eLIBRARY, РИНЦ) и публикация в журналах ВАК -->
-            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #e2e8f0;">
-                <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">Индексация и публикация трудов</h3>
-                <p style="margin-bottom: 12px;">
-                    📚 Сборнику трудов конференции присваиваются международный стандартный книжный номер <strong>ISBN</strong>, библиотечные индексы <strong>УДК</strong> и <strong>ББК</strong>. Все материалы постатейно индексируются в базе данных <strong>РИНЦ</strong> и размещаются в Научной электронной библиотеке <strong>eLIBRARY</strong>.
-                </p>
-                <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; border-radius: 6px;">
-                    <strong style="color: #166534; display: block; margin-bottom: 4px;">Публикация в журналах перечня ВАК РФ:</strong>
-                    <span style="font-size: 0.93rem; color: #14532d; line-height: 1.5;">
-                        По решению программного комитета лучшие статьи участников конференции будут рекомендованы к публикации в профильных научных журналах из перечня <strong>ВАК РФ</strong> издательства «Научтехлитиздат» (г. Москва): <em>«Нелинейный мир»</em>, <em>«Электромагнитные волны и электронные системы»</em>, <em>«Информационно-измерительные и управляющие системы»</em> и др.
-                    </span>
-                </div>
+        <div class="card about-card-with-logo">
+            <img src="лого.png" alt="Эмблема конференции ФКС" class="about-logo">
+            <div class="about-content">
+                <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
+                <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
+                <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
             </div>
         </div>
     </section>
@@ -978,8 +987,8 @@
         <h2>Условия участия и оргвзнос</h2>
         <div class="card">
             <ul class="styled-list">
-                <li><strong>Очное участие:</strong> 1 600 рублей (включает комплект участника и публикацию в сборнике).</li>
-                <li><strong>Заочное / онлайн участие:</strong> 800 рублей (включает электронный сборник трудов и индексацию в РИНЦ / eLIBRARY).</li>
+                <li><strong>Очное участие:</strong> 1 600 рублей (включает комплект участника и публикацию).</li>
+                <li><strong>Заочное / онлайн участие:</strong> 800 рублей.</li>
             </ul>
             <p style="margin-top: 15px; color: var(--text-muted);">Реквизиты и порядок оплаты организационного взноса направляются авторам после подтверждения принятия материалов.</p>
 
@@ -989,7 +998,7 @@
             </div>
 
             <div style="margin-top: 10px;">
-                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%BHard_public_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener noreferrer">Договор публичной оферты (PDF)</a>
+                <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%94%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80_%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9_%D0%BE%D1%84%D0%B5%D1%80%D1%82%D1%8B_%D0%A4%D0%9A%D0%A1_2026.pdf" target="_blank" rel="noopener noreferrer">Договор публичной оферты (PDF)</a>
                 <a class="btn" href="https://edit.str.uust.ru/uploads/news_uploads/2026-09-04/%D0%9A%D0%B2%D0%B8%D1%82%D0%B0%D0%BD%D1%86%D0%B8%D1%8F_%D0%BD%D0%B0_%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D1%83_%D0%9E%D1%80%D0%B3%D0%B2%D0%B7%D0%BD%D0%BE%D1%81%D0%B01.pdf" target="_blank" rel="noopener noreferrer">Квитанция на оплату оргвзноса (PDF)</a>
             </div>
         </div>
