@@ -325,32 +325,6 @@
             border-left-color: var(--primary);
         }
 
-        /* Архив конференций */
-        .archive-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .archive-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-left: 4px solid var(--primary);
-        }
-
-        .archive-badge {
-            align-self: flex-start;
-            background: #e2e8f0;
-            color: var(--primary);
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
         /* Базовые стили кнопок */
         .btn {
             display: inline-flex;
@@ -866,10 +840,6 @@
                 <a class="btn" href="program_2026.pdf" target="_blank" rel="noopener noreferrer">Программа конференции</a> 
                 <a class="btn btn-green" href="info_letter_2026.pdf" target="_blank" rel="noopener noreferrer">Первое информационное письмо</a>
                 <a class="btn btn-green" href="info_letter_2_2026.pdf" target="_blank" rel="noopener noreferrer">Второе информационное письмо</a>
-                <!-- Кнопка перехода на сайт прошлой конференции прямо в шапке -->
-                <a class="btn btn-secondary" href="https://struust.kaffiz.tilda.ws/" target="_blank" rel="noopener noreferrer" title="Сайт предыдущей конференции">
-                    🏛️ Прошлая конференция (Тильда)
-                </a>
                 <!-- Кнопка Яндекс Телемоста со значком видеокамеры -->
                 <a class="btn btn-secondary" href="https://telemost.yandex.ru/j/02146104736104" target="_blank" rel="noopener noreferrer" title="Подключиться к онлайн-заседаниям в Яндекс Телемост">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -902,7 +872,6 @@
     <a href="#rules">Оформление тезисов</a> 
     <a href="#committee">Комитеты</a> 
     <a href="#registration">Регистрация</a> 
-    <a href="#archive">Архив</a>
     <a href="#contacts">Контакты и карта</a>
 </nav>
 
@@ -922,10 +891,7 @@
             <div class="about-content">
                 <p style="margin-bottom: 15px;">Приглашаем преподавателей, научных сотрудников, аспирантов и студентов принять участие в <strong>VI Международной научно-практической конференции &laquo;Физика конденсированного состояния и её приложения&raquo; (ФКС-2026)</strong>.</p>
                 <p style="margin-bottom: 15px;">Конференция проводится на базе кафедры общей и теоретической физики Стерлитамакского филиала Уфимского университета науки и технологий.</p>
-                <p style="margin-bottom: 15px;"><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
-                <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted);">
-                    🏛️ <em>Материалы и сайт прошлой конференции:</em> <a href="https://struust.kaffiz.tilda.ws/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">V Международная конференция «ФКС» на Тильде →</a>
-                </p>
+                <p><strong>Формат проведения:</strong> очный с возможностью дистанционного (онлайн) и заочного участия. Сборник материалов конференции индексируется в РИНЦ.</p>
             </div>
         </div>
     </section>
@@ -1107,24 +1073,15 @@
         </div>
     </section>
 
-    <!-- Секция "Архив конференций" -->
-    <section id="archive">
-        <h2>Архив конференций</h2>
-        <div class="archive-grid">
-            <div class="card archive-card">
-                <div>
-                    <div class="archive-badge">Прошедшая конференция</div>
-                    <h3>V Международная конференция «ФКС»</h3>
-                    <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 15px;">
-                        Официальный сайт предыдущей научно-практической конференции «Физика конденсированного состояния и её приложения» кафедры общей и теоретической физики СФ УУНиТ.
-                    </p>
-                </div>
-                <a href="https://struust.kaffiz.tilda.ws/" target="_blank" rel="noopener noreferrer" class="btn btn-blue" style="margin: 0; align-self: flex-start; width: auto;">
-                    Перейти на сайт конференции →
-                </a>
-            </div>
+    <!-- Прошедшие конференции (внизу до карты) -->
+    <div style="text-align: center; margin: 30px 0 45px;">
+        <h3 style="color: var(--primary); margin-bottom: 15px; font-size: 1.25rem;">Прошедшие конференции кафедры</h3>
+        <div>
+            <a class="btn btn-blue" href="https://struust.kaffiz.tilda.ws/" target="_blank" rel="noopener noreferrer">
+                Конференция «АПНИО»
+            </a>
         </div>
-    </section>
+    </div>
 
     <section id="contacts">
         <h2>Контакты и место проведения</h2>
