@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сертификаты участников | ФКС-2026</title>
+    <link rel="icon" href="../favicon-purple.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../favicon-white.png" media="(prefers-color-scheme: dark)">
+    <style>
+        :root {
+            --primary: #004488;
+            --primary-hover: #003366;
+            --btn-blue: #0066cc;
+            --btn-blue-hover: #0052a3;
+            --bg: #f4f7f6;
+            --text: #333333;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0066cc 100%);
+            color: white;
+            padding: 35px 20px 45px;
+            text-align: center;
+        }
+
+        .header-top {
+            max-width: 1100px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background 0.2s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.92;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .info-panel {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .info-panel p {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .info-count {
+            background: #e0f2fe;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e2e8f0;
+            border-top: 3px solid var(--primary);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .cert-badge {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: #e0f2fe;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .cert-format {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #dc2626;
+            background: #fee2e2;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .cert-name {
+            color: #0f172a;
+            font-size: 1.12rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+
+        .cert-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .cert-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-blue {
+            background-color: var(--btn-blue);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-blue:hover {
+            background-color: var(--btn-blue-hover);
+        }
+
+        .btn-outline {
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+        }
+
+        .btn-outline:hover {
+            background: #e2e8f0;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 50px;
+            font-size: 0.92rem;
+        }
+
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6rem; }
+            .grid { grid-template-columns: 1fr; }
+            .info-panel { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <a href="../" class="btn-back">← На главную страницу конференции</a>
+    </div>
+    <h1>Сертификаты участников конференции</h1>
+    <p>VI Международная научно-практическая конференция «Физика конденсированного состояния и её приложения» (ФКС-2026)</p>
+</header>
+
+<div class="container">
+    <div class="info-panel">
+        <p>Именные сертификаты участников с подписью председателя оргкомитета и печатью факультета.</p>
+        <div class="info-count">Всего сертификатов: 64</div>
+    </div>
+
+    <div class="grid">
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #1</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Абдрахманова Римма Петровна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_1.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_1.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #2</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Агафонова Виолетта Сергеевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_2.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_2.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #3</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Акманова Гузель Рифкатовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_3.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_3.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #4</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Александров Павел Николаевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_4.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_4.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #5</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Альмухаметов Рафаил Фазыльянович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_5.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_5.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #6</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ахметгалиев Булат Мухаматхарасович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_6.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_6.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #7</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ахметов Рамазан Айратович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_7.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_7.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #8</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Балапанов Малик Хамитович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_8.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_8.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #9</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Батисова Айгузель Айгизовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_9.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_9.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #10</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Белобородова Татьяна Геннадиевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_10.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_10.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #11</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Биккулова Нурия Нагимьяновна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_11.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_11.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #12</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Бугай Дмитрий Ефимович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_12.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_12.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #13</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Викторов Сергей Владимирович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_13.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_13.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #14</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Гизатуллин Ренат Фаргатович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_14.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_14.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #15</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Голопапа Михаил Анатольевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_15.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_15.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #16</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Давыдов Александр Петрович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_16.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_16.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #17</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Давлетшина Алиса Данисовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_17.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_17.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #18</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Долгий Данила Александрович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_18.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_18.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #19</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ермилов Николай Владимирович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_19.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_19.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #20</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Зайцева Наталья Анатольевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_20.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_20.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #21</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Зеленова Марина Анатольевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_21.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_21.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #22</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Злыднева Татьяна Павловна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_22.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_22.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #23</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ишембетов Раис Хурматуллович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_23.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_23.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #24</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Кабиров Ильшат Файзелькавиевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_24.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_24.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #25</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Казакбаев Айдар Рушанович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_25.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_25.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #26</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Касьянов Дмитрий Андреевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_26.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_26.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #27</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ковалева Мария Евгеньевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_27.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_27.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #28</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Кризский Владимир Николаевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_28.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_28.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #29</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Кубенова Маржан Маликовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_29.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_29.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #30</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Кузнецова Александра Юрьевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_30.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_30.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #31</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Курбангулов Азат Рифкатович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_31.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_31.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #32</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Кутербеков Кайрат Атажанович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_32.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_32.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #33</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Левин Илья Олегович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_33.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_33.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #34</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Левина Татьяна Михайловна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_34.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_34.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #35</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Лопатко Эльвира Ильдаровна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_35.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_35.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #36</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Малюга Валерия Алексеевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_36.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_36.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #37</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Мелких Алексей Вениаминович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_37.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_37.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #38</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Меренцов Александр Ильич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_38.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_38.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #39</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Муляшова Наталья Борисовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_39.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_39.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #40</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Мунасыпов Ильдар Мухтарович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_40.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_40.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #41</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Николаев Дмитрий Николаевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_41.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_41.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #42</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Орлов Алексей Вениаминович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_42.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_42.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #43</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Подгайный Ярослав Андреевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_43.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_43.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #44</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Повзнер Александр Александрович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_44.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_44.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #45</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Сабитов Камиль Басирович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_45.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_45.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #46</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Сагадеева Елена Александровна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_46.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_46.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #47</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Салихов Салават Хамитович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_47.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_47.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #48</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Саметов Сергей Павлович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_48.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_48.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #49</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Сафаргалиев Данир Ильдарович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_49.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_49.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #50</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Стуколов Данила Андреевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_50.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_50.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #51</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Тукаев Вильдан Равильевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_51.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_51.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #52</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Тухватуллин Руслан Ильдарович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_52.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_52.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #53</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Урусова Наталья Вадимовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_53.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_53.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #54</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Файзрахманов Николай Рафаилевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_54.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_54.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #55</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Файзуллина Эльвина Альфредовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_55.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_55.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #56</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Филиппов Александр Иванович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_56.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_56.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #57</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Хакимов Аким Гайфуллинович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_57.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_57.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #58</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Хлимоненко Андрей Андреевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_58.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_58.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #59</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Шишкина Элина Леонидовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_59.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_59.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #60</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Шкварин Алексей Сергеевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_60.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_60.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #61</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Юмагулов Николай Иванович</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_61.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_61.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #62</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Юнусова Руфина Рустамовна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_62.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_62.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #63</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ягафаров Салават Рафилевич</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_63.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_63.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+        <div class="cert-card">
+            <div class="cert-card-header">
+                <span class="cert-badge">Сертификат #64</span>
+                <span class="cert-format">PDF</span>
+            </div>
+            <h3 class="cert-name">Ягафарова Зульфия Абдулхаевна</h3>
+            <p class="cert-desc">VI Международная конференция «ФКС-2026»</p>
+            <div class="cert-btn-group">
+                <a class="btn btn-blue" href="Phcs-Sertificate_64.pdf" download target="_blank">Скачать PDF</a>
+                <a class="btn btn-outline" href="Phcs-Sertificate_64.pdf" target="_blank">Просмотр</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p><a href="../">← Вернуться на главную страницу конференции «ФКС-2026»</a></p>
+    <p style="margin-top: 10px;">&copy; 2026 Кафедра общей и теоретической физики СФ УУНиТ. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
